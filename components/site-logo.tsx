@@ -39,6 +39,11 @@ export function SiteLogo({
   )
 }
 
+/**
+ * Focus Point Logo Mark
+ * Multiple streams (Governance · Compliance · Risk · Security · Operations · Intelligence)
+ * converging into a single focal point — the RSF philosophy made visual.
+ */
 export function LogoMark({
   className,
   variant = 'dark',
@@ -46,9 +51,9 @@ export function LogoMark({
   className?: string
   variant?: 'light' | 'dark'
 }) {
-  // On dark backgrounds, render the mark on a translucent/teal-edged tile so it
-  // stays crisp; on light backgrounds use the solid navy tile.
   const tileFill = variant === 'light' ? '#1d2c45' : '#16233a'
+  const teal = '#2f9e9a'
+  const white = '#ffffff'
 
   return (
     <svg
@@ -59,6 +64,7 @@ export function LogoMark({
       aria-label="RazorSharpFocus"
       className={className}
     >
+      {/* Tile background */}
       <rect
         x="0.75"
         y="0.75"
@@ -66,28 +72,34 @@ export function LogoMark({
         height="46.5"
         rx="11"
         fill={tileFill}
-        stroke="#2f9e9a"
-        strokeOpacity={variant === 'light' ? '0.55' : '0'}
+        stroke={teal}
+        strokeOpacity={variant === 'light' ? '0.45' : '0'}
         strokeWidth="1.5"
       />
-      {/* Sharp "focus" chevron — a razor edge converging to a focal point */}
-      <path
-        d="M14 13L27 24L14 35"
-        stroke="#2f9e9a"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M24 13L37 24L24 35"
-        stroke="#ffffff"
-        strokeOpacity="0.92"
-        strokeWidth="3.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* focal point */}
-      <circle cx="37" cy="24" r="2.6" fill="#2f9e9a" />
+
+      {/* ── Focus Point Symbol ──────────────────────────────────────────
+          Six convergence rays flowing into a central focal dot.
+          Top-left, top-right, left, right, bottom-left, bottom-right
+          all terminate at the centre point (24, 26).
+          The dot glows in teal; rays alternate teal / white for depth.
+      ──────────────────────────────────────────────────────────────── */}
+
+      {/* Top-left ray */}
+      <line x1="10" y1="11" x2="22.5" y2="24.5" stroke={teal} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.85" />
+      {/* Top ray */}
+      <line x1="24" y1="9"  x2="24"  y2="22.5" stroke={white} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.70" />
+      {/* Top-right ray */}
+      <line x1="38" y1="11" x2="25.5" y2="24.5" stroke={teal} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.85" />
+      {/* Right ray */}
+      <line x1="40" y1="26" x2="26.5" y2="26"   stroke={white} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.55" />
+      {/* Bottom-right ray */}
+      <line x1="36" y1="39" x2="25.2" y2="27.5" stroke={teal} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.75" />
+      {/* Bottom-left ray */}
+      <line x1="12" y1="39" x2="22.8" y2="27.5" stroke={white} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.55" />
+
+      {/* Focal point — glowing dot */}
+      <circle cx="24" cy="26" r="3.8" fill={teal} />
+      <circle cx="24" cy="26" r="2.0" fill={white} fillOpacity="0.9" />
     </svg>
   )
 }

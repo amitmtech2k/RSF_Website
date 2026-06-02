@@ -1,4 +1,4 @@
-import { Clock3, Building2, CreditCard, Scale, Lightbulb } from 'lucide-react'
+import { Clock3, Globe2, Layers, ShieldCheck, Cpu } from 'lucide-react'
 
 const credentials = [
   {
@@ -7,30 +7,42 @@ const credentials = [
     sub: 'Leadership Experience',
   },
   {
-    icon: Building2,
+    icon: Globe2,
     headline: 'Enterprise',
     sub: 'Transformation Programs',
   },
   {
-    icon: CreditCard,
+    icon: Cpu,
     headline: 'FinTech & Payments',
     sub: 'Deep Domain Expertise',
   },
   {
-    icon: Scale,
+    icon: ShieldCheck,
     headline: 'Governance',
     sub: '& Compliance Focus',
   },
   {
-    icon: Lightbulb,
-    headline: 'Product Innovation',
-    sub: 'Purpose-Built Systems',
+    icon: Layers,
+    headline: 'Platform',
+    sub: 'Not Consulting',
   },
+]
+
+const domains = [
+  'Technology',
+  'Operations',
+  'Governance',
+  'Compliance',
+  'Risk',
+  'Security',
+  'Transformation',
+  'FinTech',
 ]
 
 export function CredibilityBar() {
   return (
     <div className="border-y border-border bg-soft">
+      {/* Primary credential strip */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col divide-y divide-border sm:flex-row sm:divide-x sm:divide-y-0">
           {credentials.map((cred) => (
@@ -39,7 +51,7 @@ export function CredibilityBar() {
               className="flex flex-1 items-center gap-3 px-5 py-4 sm:justify-center sm:py-5"
             >
               <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-navy/8 text-navy">
-                <cred.icon className="h-4.5 w-4.5" />
+                <cred.icon className="h-4 w-4" />
               </span>
               <div>
                 <p className="font-heading text-sm font-extrabold text-navy leading-tight">
@@ -49,6 +61,25 @@ export function CredibilityBar() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Domain expertise tag strip */}
+      <div className="border-t border-border/60 bg-navy/[0.02]">
+        <div className="mx-auto max-w-7xl px-6 py-3 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span className="mr-2 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-steel/60">
+              25+ Years across
+            </span>
+            {domains.map((d) => (
+              <span
+                key={d}
+                className="rounded-full border border-navy/15 bg-white px-3 py-1 text-xs font-semibold text-navy shadow-sm"
+              >
+                {d}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
