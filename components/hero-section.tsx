@@ -40,14 +40,11 @@ export function HeroSection() {
             Building Digital Operating Systems for Modern Organizations
           </h1>
           <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/75">
-            We are not another software vendor. We are not a consultancy.
-            RazorSharpFocus builds the{' '}
-            <span className="font-semibold text-white">
-              Intelligence Layer
-            </span>{' '}
-            that connects people, processes, governance, compliance, risk, and
-            security into one coherent operating system — built by practitioners
-            with 25+ years inside enterprise organizations.
+            Built on more than two decades of delivering large-scale technology,
+            operations, governance, compliance, and transformation programs,
+            RazorSharpFocus builds intelligent Digital Operating Systems that
+            simplify complexity, improve visibility, strengthen accountability,
+            and scale with confidence.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <a
@@ -63,16 +60,6 @@ export function HeroSection() {
               Schedule a Discussion
             </a>
           </div>
-
-          {/* Social proof mini-bar */}
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 pt-8">
-            {['Enterprise Infrastructure', 'Platform Company', 'Intelligence Layer'].map((label) => (
-              <span key={label} className="flex items-center gap-1.5 text-xs font-semibold text-white/50">
-                <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-                {label}
-              </span>
-            ))}
-          </div>
         </div>
 
         <EcosystemDiagram />
@@ -85,11 +72,6 @@ function EcosystemDiagram() {
   return (
     <div className="relative mx-auto w-full max-w-md">
       <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8">
-        {/* Header label */}
-        <p className="mb-4 text-center text-[0.6rem] font-bold uppercase tracking-[0.22em] text-teal/70">
-          Convergence Architecture
-        </p>
-
         <div className="grid grid-cols-3 gap-3">
           {nodes.slice(0, 3).map((node) => (
             <NodeCard key={node.label} {...node} />
@@ -116,7 +98,7 @@ function EcosystemDiagram() {
         </div>
 
         <p className="mt-6 text-center text-xs font-medium uppercase tracking-[0.16em] text-white/45">
-          One unified intelligence layer
+          One Unified Operating Intelligence Layer
         </p>
       </div>
     </div>

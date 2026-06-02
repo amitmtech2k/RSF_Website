@@ -31,7 +31,7 @@ export function SiteLogo({
               subColor,
             )}
           >
-            Digital Operating Systems
+            Operating Intelligence
           </span>
         </span>
       )}
@@ -40,9 +40,10 @@ export function SiteLogo({
 }
 
 /**
- * Focus Point Logo Mark
- * Multiple streams (Governance · Compliance · Risk · Security · Operations · Intelligence)
- * converging into a single focal point — the RSF philosophy made visual.
+ * LogoMark — Convergence Point concept
+ * Many streams → One Focus
+ * Six lines (representing Governance, Operations, Compliance, Risk, Security, Intelligence)
+ * converging into a single sharp focal point.
  */
 export function LogoMark({
   className,
@@ -51,9 +52,11 @@ export function LogoMark({
   className?: string
   variant?: 'light' | 'dark'
 }) {
-  const tileFill = variant === 'light' ? '#1d2c45' : '#16233a'
-  const teal = '#2f9e9a'
+  const tileFill = variant === 'light' ? '#1a2e47' : '#111827'
+  const tealColor = '#2f9e9a'
+  const tealBright = '#3bbfba'
   const white = '#ffffff'
+  const whiteAlpha = variant === 'light' ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.85)'
 
   return (
     <svg
@@ -72,34 +75,36 @@ export function LogoMark({
         height="46.5"
         rx="11"
         fill={tileFill}
-        stroke={teal}
-        strokeOpacity={variant === 'light' ? '0.45' : '0'}
+        stroke={tealColor}
+        strokeOpacity={variant === 'light' ? '0.45' : '0.2'}
         strokeWidth="1.5"
       />
 
-      {/* ── Focus Point Symbol ──────────────────────────────────────────
-          Six convergence rays flowing into a central focal dot.
-          Top-left, top-right, left, right, bottom-left, bottom-right
-          all terminate at the centre point (24, 26).
-          The dot glows in teal; rays alternate teal / white for depth.
-      ──────────────────────────────────────────────────────────────── */}
+      {/*
+        Convergence Point concept:
+        Multiple streams — teal (governance/compliance lines) and white (ops/intelligence lines)
+        — converging from the left/top/bottom into a single sharp focal point on the right.
+      */}
 
-      {/* Top-left ray */}
-      <line x1="10" y1="11" x2="22.5" y2="24.5" stroke={teal} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.85" />
-      {/* Top ray */}
-      <line x1="24" y1="9"  x2="24"  y2="22.5" stroke={white} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.70" />
-      {/* Top-right ray */}
-      <line x1="38" y1="11" x2="25.5" y2="24.5" stroke={teal} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.85" />
-      {/* Right ray */}
-      <line x1="40" y1="26" x2="26.5" y2="26"   stroke={white} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.55" />
-      {/* Bottom-right ray */}
-      <line x1="36" y1="39" x2="25.2" y2="27.5" stroke={teal} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.75" />
-      {/* Bottom-left ray */}
-      <line x1="12" y1="39" x2="22.8" y2="27.5" stroke={white} strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.55" />
+      {/* Upper teal stream — converging from top-left */}
+      <line x1="8" y1="10" x2="36" y2="24" stroke={tealColor} strokeWidth="2.2" strokeLinecap="round" />
+      {/* Middle teal stream — converging from left-center */}
+      <line x1="7" y1="20" x2="36" y2="24" stroke={tealBright} strokeWidth="2.6" strokeLinecap="round" />
+      {/* Lower teal stream — converging from bottom-left */}
+      <line x1="8" y1="38" x2="36" y2="24" stroke={tealColor} strokeWidth="2.2" strokeLinecap="round" />
 
-      {/* Focal point — glowing dot */}
-      <circle cx="24" cy="26" r="3.8" fill={teal} />
-      <circle cx="24" cy="26" r="2.0" fill={white} fillOpacity="0.9" />
+      {/* Upper white stream — converging from upper area */}
+      <line x1="14" y1="8" x2="36" y2="24" stroke={whiteAlpha} strokeWidth="1.6" strokeLinecap="round" />
+      {/* Lower white stream — converging from lower area */}
+      <line x1="14" y1="40" x2="36" y2="24" stroke={whiteAlpha} strokeWidth="1.6" strokeLinecap="round" />
+
+      {/* Focal point — the sharp convergence */}
+      <circle cx="36" cy="24" r="3.2" fill={tealBright} />
+      {/* Inner highlight dot */}
+      <circle cx="36" cy="24" r="1.4" fill={white} />
+
+      {/* Subtle radial glow behind focal point */}
+      <circle cx="36" cy="24" r="5.5" fill={tealColor} fillOpacity="0.12" />
     </svg>
   )
 }

@@ -1,30 +1,30 @@
-import { Clock3, Globe2, Layers, ShieldCheck, Cpu } from 'lucide-react'
+import { Clock3, Building2, CreditCard, Scale, Cpu } from 'lucide-react'
 
 const credentials = [
   {
     icon: Clock3,
     headline: '25+ Years',
-    sub: 'Leadership Experience',
-  },
-  {
-    icon: Globe2,
-    headline: 'Enterprise',
-    sub: 'Transformation Programs',
+    sub: 'Enterprise Leadership',
   },
   {
     icon: Cpu,
+    headline: 'CTO Background',
+    sub: 'Platform Architect',
+  },
+  {
+    icon: CreditCard,
     headline: 'FinTech & Payments',
     sub: 'Deep Domain Expertise',
   },
   {
-    icon: ShieldCheck,
+    icon: Scale,
     headline: 'Governance',
-    sub: '& Compliance Focus',
+    sub: '& Compliance Built-In',
   },
   {
-    icon: Layers,
-    headline: 'Platform',
-    sub: 'Not Consulting',
+    icon: Building2,
+    headline: 'Platform Company',
+    sub: 'Not a Consultancy',
   },
 ]
 
@@ -35,8 +35,8 @@ const domains = [
   'Compliance',
   'Risk',
   'Security',
-  'Transformation',
   'FinTech',
+  'Transformation',
 ]
 
 export function CredibilityBar() {

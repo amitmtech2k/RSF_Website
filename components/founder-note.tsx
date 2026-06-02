@@ -17,7 +17,7 @@ export function FounderNote() {
         {/* Section label */}
         <div className="mb-12 flex items-center gap-4">
           <span className="text-xs font-bold uppercase tracking-[0.22em] text-teal">
-            Why RazorSharpFocus Exists
+            A Note From Our Founder
           </span>
           <span className="h-px flex-1 bg-border max-w-xs" />
         </div>
@@ -71,27 +71,32 @@ export function FounderNote() {
 
             <div className="space-y-6">
               <p className="text-xl leading-relaxed font-medium text-navy">
-                After 25 years inside enterprise organizations — not advising them,
-                but leading transformation programs, rebuilding financial infrastructure,
-                designing governance frameworks, and navigating regulatory scrutiny —
-                I observed something that never changed, regardless of industry, scale,
-                or geography.
+                I have spent over twenty-five years inside organizations — not
+                observing them from the outside, but leading technology
+                transformation programs, rebuilding financial infrastructure,
+                designing governance frameworks, navigating regulatory scrutiny,
+                and building the operational systems that determine whether
+                organizations grow or stall.
               </p>
 
               <p className="leading-relaxed text-steel">
-                Organizations buy more software every year. Yet they still struggle with the
-                same problems: compliance failures, accountability gaps, governance breakdowns,
-                risk surprises, and operational fragmentation. The software existed.
-                The processes existed. The consultants were hired and departed.
+                In FinTech and payments, I watched organizations create sophisticated
+                products without the operational foundations to sustain them. In
+                enterprise technology, I saw leaders invest heavily in software while
+                the underlying processes remained broken. In governance and compliance,
+                I witnessed boards approve frameworks that no one actually executed.
               </p>
 
               <p className="leading-relaxed text-steel">
-                The missing piece was never more software. It was the absence of a{' '}
+                Across every industry and geography — financial services, mobility,
+                logistics, healthcare, manufacturing — the challenge was always the
+                same. The problem was never the software. The problem was the absence
+                of{' '}
                 <span className="font-semibold text-navy">
-                  connected, accountable, governed operating system
+                  connected, accountable, governed systems
                 </span>{' '}
-                — one that tied people to processes, data to decisions, and obligations
-                to measurable outcomes. Infrastructure, not tooling.
+                that tied people to processes, data to decisions, and obligations
+                to outcomes.
               </p>
 
               <div className="relative my-8 rounded-2xl border-l-4 border-teal bg-soft px-7 py-6">
@@ -99,27 +104,22 @@ export function FounderNote() {
                   Technology existed. Processes existed. Software existed.
                 </p>
                 <p className="mt-2 text-pretty font-heading text-lg font-bold leading-snug text-teal">
-                  The operating system that connected them did not.
+                  Operational clarity, accountability, and integrated control
+                  systems did not.
                 </p>
               </div>
 
               <p className="leading-relaxed text-steel">
-                RazorSharpFocus was founded to build exactly that — not a consulting firm,
-                not another point solution, but a{' '}
-                <span className="font-semibold text-navy">
-                  platform company
-                </span>{' '}
-                that delivers Digital Operating Systems. Each OS is a complete discipline.
-                Together, they form the Intelligence Layer of the modern enterprise.
+                This is the gap RazorSharpFocus was created to fill — not to add
+                another tool to an already crowded technology landscape, but to
+                provide organizations with the Digital Operating Systems that connect
+                every dimension of performance into one coherent, governed whole.
               </p>
 
               <p className="font-semibold text-navy leading-relaxed">
-                We are building the infrastructure of operational excellence —
-                the same way ServiceNow built workflow infrastructure,
-                Datadog built observability infrastructure,
-                and Palantir built decision intelligence infrastructure.{' '}
+                We are not a software company. We are not a consultancy.{' '}
                 <span className="text-teal">
-                  This is our category.
+                  We build the infrastructure of operational excellence.
                 </span>
               </p>
             </div>
