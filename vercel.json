@@ -1,7 +1,4 @@
 {
   "version": 3,
-  "framework": "nextjs",
-  "build": {
-    "command": "pnpm install && pnpm exec next build"
-  }
+  "framework": "nextjs"
 }
