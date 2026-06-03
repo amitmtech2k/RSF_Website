@@ -13,44 +13,37 @@ const challenges = [
   {
     icon: EyeOff,
     title: 'Lack of Process Visibility',
-    description:
-      'Leaders cannot see how work actually flows across teams, systems, and business units.',
+    description: 'Leaders cannot see how work actually flows across teams, systems, and business units.',
   },
   {
     icon: Repeat,
     title: 'Inconsistent Execution',
-    description:
-      'Processes are followed differently across locations, resulting in unpredictable outcomes.',
+    description: 'Processes are followed differently across locations, resulting in unpredictable outcomes.',
   },
   {
     icon: FileWarning,
     title: 'Compliance Gaps',
-    description:
-      'Controls and obligations are managed reactively, exposing organizations to regulatory risk.',
+    description: 'Controls and obligations are managed reactively, exposing organizations to regulatory risk.',
   },
   {
     icon: Gauge,
     title: 'Operational Inefficiencies',
-    description:
-      'Manual handoffs and disconnected tools slow execution and inflate operating costs.',
+    description: 'Manual handoffs and disconnected tools slow execution and inflate operating costs.',
   },
   {
     icon: UserX,
     title: 'Weak Accountability',
-    description:
-      'Ownership of decisions, actions, and outcomes is unclear across the organization.',
+    description: 'Ownership of decisions, actions, and outcomes is unclear across the organization.',
   },
   {
     icon: Boxes,
     title: 'Fragmented Systems',
-    description:
-      'Critical information is scattered across siloed applications that do not talk to each other.',
+    description: 'Critical information is scattered across siloed applications that do not talk to each other.',
   },
   {
     icon: Brain,
     title: 'Limited Decision Intelligence',
-    description:
-      'Decisions are made without the connected, real-time intelligence leaders need.',
+    description: 'Decisions are made without the connected, real-time intelligence leaders need.',
   },
 ]
 
@@ -64,28 +57,30 @@ export function LearnedSection() {
           description="Across industries, technologies, and business models, most organizational challenges trace back to a few common areas. Technology alone does not solve them — organizations need operating systems that connect people, processes, controls, data, and decisions."
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {challenges.map((item) => (
             <article
               key={item.title}
-              className="group rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-md"
+              className="group rounded-xl border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-teal/35 hover:shadow-md"
             >
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors group-hover:bg-teal/10 group-hover:text-teal">
                 <item.icon className="h-5 w-5" />
               </span>
-              <h3 className="mt-5 font-heading text-lg font-bold text-navy">
+              <h3 className="mt-4 font-heading text-[0.88rem] font-bold text-navy leading-snug">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-steel">
+              <p className="mt-2 text-xs leading-relaxed text-steel">
                 {item.description}
               </p>
             </article>
           ))}
-          <article className="flex flex-col justify-center rounded-xl border border-navy bg-navy p-6 text-white shadow-sm">
-            <h3 className="font-heading text-lg font-bold text-white">
+
+          {/* Closing card */}
+          <article className="flex flex-col justify-center rounded-xl border border-navy bg-navy p-6 shadow-sm lg:col-span-1">
+            <h3 className="font-heading text-base font-bold text-white leading-snug">
               That is what RazorSharpFocus is building.
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/70">
+            <p className="mt-2 text-xs leading-relaxed text-white/60">
               Operating systems that turn organizational complexity into clarity,
               accountability, and confident decisions.
             </p>

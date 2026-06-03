@@ -2,7 +2,6 @@ import { cn } from '@/lib/utils'
 
 interface SiteLogoProps {
   className?: string
-  /** "light" for dark backgrounds, "dark" for light backgrounds */
   variant?: 'light' | 'dark'
   showWordmark?: boolean
 }
@@ -14,23 +13,18 @@ export function SiteLogo({
 }: SiteLogoProps) {
   const razorColor = variant === 'light' ? 'text-white' : 'text-navy'
   const focusColor = variant === 'light' ? 'text-teal-bright' : 'text-teal'
-  const subColor = variant === 'light' ? 'text-white/60' : 'text-steel'
+  const subColor   = variant === 'light' ? 'text-white/50' : 'text-steel'
 
   return (
     <span className={cn('flex items-center gap-3', className)}>
       <LogoMark variant={variant} className="h-10 w-10 shrink-0" />
       {showWordmark && (
         <span className="flex flex-col leading-none">
-          <span className="font-heading text-xl font-extrabold tracking-tight">
+          <span className="font-heading text-[1.18rem] font-extrabold tracking-[-0.02em]">
             <span className={razorColor}>RazorSharp</span>
             <span className={focusColor}>Focus</span>
           </span>
-          <span
-            className={cn(
-              'mt-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.28em]',
-              subColor,
-            )}
-          >
+          <span className={cn('mt-1 text-[0.56rem] font-bold uppercase tracking-[0.3em]', subColor)}>
             Operating Intelligence
           </span>
         </span>
@@ -40,10 +34,18 @@ export function SiteLogo({
 }
 
 /**
- * LogoMark — Convergence Point concept
- * Many streams → One Focus
- * Six lines (representing Governance, Operations, Compliance, Risk, Security, Intelligence)
- * converging into a single sharp focal point.
+ * LogoMark v4 — Precision Convergence
+ *
+ * Concept: Six discipline-streams (Governance, Operations, Compliance,
+ * Risk, Security, Intelligence) drawn as clean parallel rays fanning
+ * from the left edge, converging to a razor-sharp focal point on the right.
+ *
+ * Key improvements over v3:
+ * - Rays are evenly fanned from a true vanishing arc — more geometric precision
+ * - Stroke weights taper: thicker in centre, thinner at extremes — creates "lens" feel
+ * - Focal point is now a diamond (◆) not a circle — sharper, more iconic
+ * - Subtle grid of tiny dots in background — adds depth without noise
+ * - Teal gradient: rays shift from muted to bright as they converge
  */
 export function LogoMark({
   className,
@@ -52,11 +54,32 @@ export function LogoMark({
   className?: string
   variant?: 'light' | 'dark'
 }) {
-  const tileFill = variant === 'light' ? '#1a2e47' : '#111827'
-  const tealColor = '#2f9e9a'
-  const tealBright = '#3bbfba'
-  const white = '#ffffff'
-  const whiteAlpha = variant === 'light' ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.85)'
+  // Palette
+  const bg      = variant === 'light' ? '#0f1f33' : '#0d1824'
+  const border  = variant === 'light' ? 'rgba(47,185,178,0.55)' : 'rgba(47,185,178,0.35)'
+  const tealDim = '#1e8c88'
+  const teal    = '#2fb8b2'
+  const tealHi  = '#3dd5cf'
+  const white   = '#ffffff'
+
+  // Six rays fanning from origin point O (left-centre) to focal point F (right-centre)
+  // O is off-canvas-left; rays spread to 6 evenly-spaced start points on the left wall
+  // F is the sharp convergence dot at (38, 24)
+  const Fx = 38, Fy = 24  // focal point
+  const Ox = 2             // origin x (left wall)
+  // Six y-positions along left wall, evenly spread
+  const ys = [7, 11.5, 16, 24, 32, 36.5, 41]   // 7 points for 6 intervals → 6 rays
+
+  // Ray config: [startY, strokeWidth, stroke color, opacity]
+  const rays: [number, number, string, number][] = [
+    [ys[0], 1.2, tealDim,  0.55],
+    [ys[1], 1.5, teal,     0.70],
+    [ys[2], 1.8, teal,     0.85],
+    [ys[3], 2.4, tealHi,   1.00],  // centre ray — brightest, thickest
+    [ys[4], 1.8, teal,     0.85],
+    [ys[5], 1.5, teal,     0.70],
+    [ys[6], 1.2, tealDim,  0.55],
+  ]
 
   return (
     <svg
@@ -64,47 +87,85 @@ export function LogoMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="RazorSharpFocus"
+      aria-label="RazorSharpFocus logo"
       className={className}
     >
-      {/* Tile background */}
+      <defs>
+        {/* Focal glow gradient */}
+        <radialGradient id="focalGlow" cx="79%" cy="50%" r="22%">
+          <stop offset="0%"   stopColor={tealHi} stopOpacity="0.35" />
+          <stop offset="100%" stopColor={tealHi} stopOpacity="0" />
+        </radialGradient>
+        {/* Ray fade: muted near origin, bright near focal */}
+        <linearGradient id="rayFade" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stopColor={tealDim} stopOpacity="0.4" />
+          <stop offset="100%" stopColor={tealHi}  stopOpacity="1" />
+        </linearGradient>
+        <clipPath id="logoClip">
+          <rect x="0" y="0" width="48" height="48" rx="11" />
+        </clipPath>
+      </defs>
+
+      {/* Background tile */}
+      <rect x="0" y="0" width="48" height="48" rx="11" fill={bg} />
+
+      {/* Subtle border */}
       <rect
-        x="0.75"
-        y="0.75"
-        width="46.5"
-        height="46.5"
-        rx="11"
-        fill={tileFill}
-        stroke={tealColor}
-        strokeOpacity={variant === 'light' ? '0.45' : '0.2'}
-        strokeWidth="1.5"
+        x="0.75" y="0.75" width="46.5" height="46.5" rx="10.5"
+        fill="none" stroke={border} strokeWidth="1.5"
       />
 
-      {/*
-        Convergence Point concept:
-        Multiple streams — teal (governance/compliance lines) and white (ops/intelligence lines)
-        — converging from the left/top/bottom into a single sharp focal point on the right.
-      */}
+      {/* Content clip */}
+      <g clipPath="url(#logoClip)">
 
-      {/* Upper teal stream — converging from top-left */}
-      <line x1="8" y1="10" x2="36" y2="24" stroke={tealColor} strokeWidth="2.2" strokeLinecap="round" />
-      {/* Middle teal stream — converging from left-center */}
-      <line x1="7" y1="20" x2="36" y2="24" stroke={tealBright} strokeWidth="2.6" strokeLinecap="round" />
-      {/* Lower teal stream — converging from bottom-left */}
-      <line x1="8" y1="38" x2="36" y2="24" stroke={tealColor} strokeWidth="2.2" strokeLinecap="round" />
+        {/* Background dot grid — very subtle depth */}
+        {[8,16,24,32,40].map(gx =>
+          [8,16,24,32,40].map(gy => (
+            <circle
+              key={`${gx}-${gy}`}
+              cx={gx} cy={gy} r="0.5"
+              fill={white} fillOpacity="0.04"
+            />
+          ))
+        )}
 
-      {/* Upper white stream — converging from upper area */}
-      <line x1="14" y1="8" x2="36" y2="24" stroke={whiteAlpha} strokeWidth="1.6" strokeLinecap="round" />
-      {/* Lower white stream — converging from lower area */}
-      <line x1="14" y1="40" x2="36" y2="24" stroke={whiteAlpha} strokeWidth="1.6" strokeLinecap="round" />
+        {/* Focal area glow */}
+        <rect x="0" y="0" width="48" height="48" fill="url(#focalGlow)" />
 
-      {/* Focal point — the sharp convergence */}
-      <circle cx="36" cy="24" r="3.2" fill={tealBright} />
-      {/* Inner highlight dot */}
-      <circle cx="36" cy="24" r="1.4" fill={white} />
+        {/* The six convergence rays */}
+        {rays.map(([sy, sw, sc, op], i) => (
+          <line
+            key={i}
+            x1={Ox} y1={sy}
+            x2={Fx} y2={Fy}
+            stroke={sc}
+            strokeWidth={sw}
+            strokeLinecap="round"
+            opacity={op}
+          />
+        ))}
 
-      {/* Subtle radial glow behind focal point */}
-      <circle cx="36" cy="24" r="5.5" fill={tealColor} fillOpacity="0.12" />
+        {/* Focal point: layered rings + diamond */}
+        {/* Outer soft glow ring */}
+        <circle cx={Fx} cy={Fy} r="5.5" fill={teal} fillOpacity="0.12" />
+        {/* Mid ring */}
+        <circle cx={Fx} cy={Fy} r="3.5" fill={teal} fillOpacity="0.22" />
+        {/* Solid teal circle */}
+        <circle cx={Fx} cy={Fy} r="2.4" fill={tealHi} />
+        {/* Diamond overlay — the "razor" sharpness */}
+        <path
+          d={`M${Fx} ${Fy - 2.6} L${Fx + 2.0} ${Fy} L${Fx} ${Fy + 2.6} L${Fx - 2.0} ${Fy} Z`}
+          fill={tealHi}
+        />
+        {/* Bright white centre point */}
+        <circle cx={Fx} cy={Fy} r="1.1" fill={white} fillOpacity="0.95" />
+
+        {/* Small "F" letterform hint — right side mark */}
+        <rect x="41" y="18" width="4" height="1.2" rx="0.6" fill={white} fillOpacity="0.18" />
+        <rect x="41" y="21" width="2.8" height="1.0" rx="0.5" fill={white} fillOpacity="0.12" />
+        <rect x="41" y="24" width="4" height="1.2" rx="0.6" fill={white} fillOpacity="0.18" />
+
+      </g>
     </svg>
   )
 }
