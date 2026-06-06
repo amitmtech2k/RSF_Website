@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RazorSharpFocus — Building the Next Generation of Digital Operating Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1e38;
+    --navy-mid: #1a2f52;
+    --navy-light: #253d65;
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --teal-pale: #ccfbf1;
+    --steel: #64748b;
+    --slate: #94a3b8;
+    --soft: #f8fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --font-head: 'Manrope', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-lg: 18px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; }
+  h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 800; letter-spacing: -0.025em; }
+  h3 { font-size: 1.2rem; font-weight: 700; }
+  p { line-height: 1.75; }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  @media (min-width: 768px) { .wrap { padding: 0 40px; } }
+  section { padding: 96px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 960px) {
+    .grid-2 { grid-template-columns: 1fr; gap: 48px; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.18em; color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--teal); border-radius: 2px; }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal); color: #fff; font-family: var(--font-head);
+    font-weight: 700; font-size: 0.9rem; padding: 14px 28px;
+    border-radius: 8px; text-decoration: none; transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #0f766e; transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.8); font-family: var(--font-head);
+    font-weight: 600; font-size: 0.9rem; padding: 14px 28px;
+    border-radius: 8px; text-decoration: none; transition: all 0.2s;
+    border: 1.5px solid rgba(255,255,255,0.2);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .btn-navy {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); color: #fff; font-family: var(--font-head);
+    font-weight: 700; font-size: 0.9rem; padding: 14px 28px;
+    border-radius: 8px; text-decoration: none; transition: all 0.2s;
+    border: none; cursor: pointer; width: 100%; justify-content: center;
+  }
+  .btn-navy:hover { background: var(--navy-mid); }
+
+  /* ── HEADER ── */
+  #site-header {
+    position: fixed; inset: 0 0 auto; z-index: 100;
+    padding: 0; transition: all 0.3s;
+  }
+  #site-header.scrolled {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 18px 24px;
+  }
+  @media (min-width: 768px) { .header-inner { padding: 18px 40px; } }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-head); font-weight: 800; font-size: 1.1rem;
+    text-decoration: none; letter-spacing: -0.02em;
+    color: var(--white); transition: color 0.3s;
+  }
+  #site-header.scrolled .logo { color: var(--navy); }
+
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 7px;
+    background: var(--teal); display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head); font-weight: 800; font-size: 0.75rem; color: #fff;
+    letter-spacing: -0.01em; flex-shrink: 0;
+  }
+
+  nav { display: flex; align-items: center; gap: 32px; }
+  nav a {
+    font-size: 0.85rem; font-weight: 600; text-decoration: none;
+    color: rgba(255,255,255,0.75); transition: color 0.2s;
+  }
+  #site-header.scrolled nav a { color: var(--steel); }
+  nav a:hover { color: #fff; }
+  #site-header.scrolled nav a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--teal); color: #fff !important;
+    padding: 10px 20px; border-radius: 7px; font-weight: 700 !important;
+    font-size: 0.82rem !important;
+  }
+  .nav-cta:hover { background: #0f766e !important; }
+  #site-header.scrolled .nav-cta { background: var(--navy); }
+  #site-header.scrolled .nav-cta:hover { background: var(--navy-mid) !important; }
+  @media (max-width: 768px) { nav { display: none; } }
+
+  /* ── HERO ── */
+  #hero {
+    background: var(--navy);
+    padding: 160px 0 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  #hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(13,148,136,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05);
+    border-radius: 100px; padding: 6px 16px 6px 8px;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--teal-light); margin-bottom: 28px;
+  }
+  .hero-badge span {
+    background: var(--teal); color: #fff; border-radius: 100px;
+    padding: 3px 10px; font-size: 0.65rem;
+  }
+  #hero h1 { color: #fff; max-width: 780px; margin-bottom: 24px; }
+  #hero h1 em { font-style: normal; color: var(--teal-light); }
+  .hero-sub {
+    color: rgba(255,255,255,0.65); font-size: 1.1rem; max-width: 580px;
+    margin-bottom: 40px; line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .hero-visual {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    backdrop-filter: blur(8px);
+  }
+  .visual-label {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.18em; color: rgba(255,255,255,0.3); margin-bottom: 20px;
+    text-align: center;
+  }
+  .os-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;
+  }
+  .os-chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 12px 14px;
+    display: flex; align-items: center; gap: 10px;
+    transition: all 0.2s;
+  }
+  .os-chip:hover { border-color: rgba(13,148,136,0.5); background: rgba(13,148,136,0.06); }
+  .os-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+  .os-chip span { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.75); }
+  .visual-connector {
+    display: flex; align-items: center; gap: 12px; margin: 8px 0;
+  }
+  .connector-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(13,148,136,0.5), transparent); }
+  .connector-badge {
+    background: rgba(13,148,136,0.15); border: 1px solid rgba(13,148,136,0.3);
+    border-radius: 8px; padding: 8px 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .connector-badge .logo-mark { width: 22px; height: 22px; font-size: 0.58rem; }
+  .connector-badge span { font-size: 0.78rem; font-weight: 700; color: #fff; }
+
+  /* ── PROBLEM STRIP ── */
+  #problem {
+    background: var(--soft);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 0;
+  }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  @media (max-width: 900px) { .problem-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .problem-grid { grid-template-columns: 1fr; } }
+  .problem-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px;
+    transition: all 0.2s;
+  }
+  .problem-card:hover { border-color: #cbd5e1; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .problem-icon {
+    width: 40px; height: 40px; border-radius: 9px;
+    background: #fef2f2; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 14px;
+  }
+  .problem-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+  .problem-card p { font-size: 0.83rem; color: var(--steel); line-height: 1.6; }
+
+  /* ── WHAT WE DO ── */
+  #what-we-do { background: var(--white); }
+  .section-heading { max-width: 640px; margin-bottom: 64px; }
+  .section-heading h2 { margin-bottom: 16px; color: var(--navy); }
+  .section-heading p { color: var(--steel); font-size: 1.05rem; }
+  .section-heading.centered { max-width: 760px; margin-left: auto; margin-right: auto; text-align: center; }
+  .section-heading.centered p { margin: 16px auto 0; }
+
+  .three-step { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+  .three-step::before {
+    content: ''; position: absolute; top: 28px; left: calc(16.67% + 12px);
+    right: calc(16.67% + 12px); height: 2px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 100%);
+    z-index: 0;
+  }
+  @media (max-width: 768px) { .three-step::before { display: none; } .three-step { grid-template-columns: 1fr; gap: 24px; } }
+  .step-card { padding: 0 24px 0 0; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); color: #fff;
+    font-family: var(--font-head); font-weight: 800; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .step-card:nth-child(2) .step-num { background: var(--teal); }
+  .step-card:nth-child(3) .step-num { background: var(--navy-light); }
+  .step-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--navy); }
+  .step-card p { font-size: 0.88rem; color: var(--steel); }
+
+  .value-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    margin-top: 64px;
+  }
+  @media (max-width: 700px) { .value-grid { grid-template-columns: 1fr; } }
+  .value-card {
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 28px; transition: all 0.25s;
+  }
+  .value-card:hover { border-color: #99f6e4; background: #f0fdf4; }
+  .value-icon {
+    font-size: 1.5rem; margin-bottom: 12px;
+    display: block;
+  }
+  .value-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+  .value-card p { font-size: 0.85rem; color: var(--steel); }
+
+  /* ── OPERATING SYSTEMS ── */
+  #operating-systems { background: var(--soft); }
+  .os-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px;
+  }
+  @media (max-width: 900px) { .os-cards { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 580px) { .os-cards { grid-template-columns: 1fr; } }
+  .os-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 28px;
+    transition: all 0.25s; cursor: default;
+    display: flex; flex-direction: column;
+  }
+  .os-card:hover { border-color: var(--teal-light); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+  .os-card-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 16px;
+  }
+  .os-card h3 { font-size: 1.05rem; margin-bottom: 4px; color: var(--navy); }
+  .os-card .os-tagline { font-size: 0.78rem; color: var(--teal); font-weight: 600; margin-bottom: 12px; }
+  .os-card p { font-size: 0.84rem; color: var(--steel); flex: 1; }
+  .os-features {
+    margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .os-features li {
+    list-style: none; font-size: 0.78rem; color: var(--steel);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .os-features li::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
+  }
+
+  .os-status-launch {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.68rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 100px; background: #dcfce7; color: #15803d;
+    border: 1px solid #bbf7d0; margin-bottom: 12px;
+  }
+  .os-status-dev {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.68rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 100px; background: #fef3c7; color: #b45309;
+    border: 1px solid #fde68a; margin-bottom: 12px;
+  }
+  .os-status-launch::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+  .os-status-dev::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; }
+  #framework { background: var(--navy); }
+  #framework .section-heading h2 { color: #fff; }
+  #framework .section-heading p { color: rgba(255,255,255,0.55); }
+  #framework .eyebrow { color: var(--teal-light); }
+  .framework-chain {
+    display: flex; flex-wrap: wrap; gap: 0; margin: 48px 0 56px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg); padding: 24px; align-items: center; justify-content: center;
+  }
+  .chain-item {
+    display: flex; align-items: center; gap: 0;
+  }
+  .chain-node {
+    padding: 10px 18px; border-radius: 8px;
+    border: 1px solid rgba(13,148,136,0.3); background: rgba(13,148,136,0.1);
+    font-family: var(--font-head); font-size: 0.82rem; font-weight: 700; color: #fff;
+  }
+  .chain-arrow {
+    width: 32px; text-align: center; color: rgba(13,148,136,0.5);
+    font-size: 1rem;
+  }
+  .framework-pillars {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  @media (max-width: 900px) { .framework-pillars { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .framework-pillars { grid-template-columns: 1fr; } }
+  .pillar-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 24px; transition: all 0.2s;
+  }
+  .pillar-card:hover { border-color: rgba(13,148,136,0.4); background: rgba(13,148,136,0.06); }
+  .pillar-num { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; margin-bottom: 10px; }
+  .pillar-card h4 { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .pillar-card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ── INDUSTRIES ── */
+  #industries { background: var(--white); }
+  .industry-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px;
+  }
+  @media (max-width: 800px) { .industry-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .industry-grid { grid-template-columns: 1fr; } }
+  .industry-card {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; transition: all 0.2s;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .industry-card:hover { border-color: #99f6e4; background: #f0fdf4; }
+  .ind-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .industry-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .industry-card p { font-size: 0.8rem; color: var(--steel); }
+
+  /* ── FOUNDER ── */
+  #founder { background: var(--soft); }
+  .founder-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 48px; max-width: 900px; margin: 0 auto;
+  }
+  .founder-header { display: flex; align-items: center; gap: 20px; margin-bottom: 32px; }
+  .founder-avatar {
+    width: 64px; height: 64px; border-radius: 14px;
+    background: var(--navy); color: #fff;
+    font-family: var(--font-head); font-weight: 800; font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .founder-name { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; color: var(--navy); }
+  .founder-title { font-size: 0.85rem; color: var(--teal); font-weight: 600; }
+  .founder-bio p { color: var(--steel); margin-bottom: 16px; font-size: 0.95rem; }
+  .founder-quote {
+    border-left: 3px solid var(--teal); padding-left: 24px; margin: 24px 0;
+    background: var(--soft); padding: 20px 24px; border-radius: 0 10px 10px 0;
+  }
+  .founder-quote p { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.6; }
+  .founder-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .founder-tag {
+    font-size: 0.75rem; font-weight: 600; padding: 5px 12px;
+    border-radius: 100px; background: var(--soft); border: 1px solid var(--border);
+    color: var(--navy);
+  }
+
+  /* ── WHY RSF ── */
+  #why-rsf { background: var(--white); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px;
+  }
+  @media (max-width: 800px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card {
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 28px; transition: all 0.2s;
+  }
+  .why-card:hover { border-color: #99f6e4; transform: translateY(-2px); }
+  .why-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .why-card p { font-size: 0.85rem; color: var(--steel); }
+
+  /* ── CTA ── */
+  #contact { background: var(--navy); overflow: hidden; position: relative; }
+  #contact::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(13,148,136,0.12) 0%, transparent 60%);
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start; }
+  @media (max-width: 900px) { .cta-layout { grid-template-columns: 1fr; } }
+  #contact h2 { color: #fff; margin-bottom: 16px; }
+  #contact p { color: rgba(255,255,255,0.6); font-size: 1.02rem; margin-bottom: 28px; }
+  .cta-benefits { display: flex; flex-direction: column; gap: 10px; }
+  .cta-benefit { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 600; }
+  .cta-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(13,148,136,0.2); border: 1px solid rgba(13,148,136,0.4);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: var(--teal-light); font-size: 11px;
+  }
+  .form-card {
+    background: #fff; border-radius: var(--radius-lg); padding: 36px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .field label { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+  .field input, .field select, .field textarea {
+    border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 11px 14px; font-family: var(--font-body); font-size: 0.88rem;
+    color: var(--navy); outline: none; transition: border-color 0.2s;
+    background: var(--white);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .form-success { text-align: center; padding: 48px 0; }
+  .form-success .check-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #d1fae5; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin: 0 auto 16px;
+  }
+  .form-success h3 { color: var(--navy); font-family: var(--font-head); margin-bottom: 8px; }
+  .form-success p { color: var(--steel); font-size: 0.88rem; }
+
+  /* ── FOOTER ── */
+  #footer {
+    background: #0a1525; border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 48px 0 32px;
+  }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { color: rgba(255,255,255,0.7); font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .footer-tagline { color: rgba(255,255,255,0.3); font-size: 0.78rem; margin-top: 4px; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.45); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 32px 0 24px; }
+  .footer-bottom { text-align: center; color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+
+  /* ── CREDIBILITY BAR ── */
+  .cred-bar {
+    background: var(--navy-mid); padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .cred-items { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .cred-item { display: flex; align-items: center; gap: 10px; }
+  .cred-num { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; color: var(--teal-light); }
+  .cred-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 500; line-height: 1.3; }
+
+  /* ── DIVIDER QUOTE ── */
+  .divider-quote {
+    background: var(--teal); padding: 64px 0; text-align: center;
+  }
+  .divider-quote p {
+    font-family: var(--font-head); font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 700; color: #fff; max-width: 820px; margin: 0 auto;
+    line-height: 1.5;
+  }
+  .divider-quote em { font-style: normal; opacity: 0.7; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <div class="logo-mark">RSF</div>
+      RazorSharpFocus
+    </a>
+    <nav>
+      <a href="#what-we-do">What We Do</a>
+      <a href="#operating-systems">Products</a>
+      <a href="#industries">Industries</a>
+      <a href="#founder">About</a>
+      <a href="#contact" class="nav-cta">Join Early Access</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="wrap">
+    <div class="grid-2">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>Building Now</span>
+          First Launch: Mobility OS — July 2025
+        </div>
+        <h1 class="fade-up">Building the Next Generation of <em>Digital Operating Systems</em></h1>
+        <p class="hero-sub fade-up delay-1">RazorSharpFocus is developing a suite of purpose-built operating systems for governance, compliance, operations, risk, workforce, and finance — designed with practitioners and built with early adopters. Mobility OS launches July 2025.</p>
+        <div class="hero-actions fade-up delay-2">
+          <a href="#operating-systems" class="btn-primary">See What We're Building</a>
+          <a href="#contact" class="btn-ghost">Become an Early Adopter</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up delay-3">
+        <div class="visual-label">Suite of seven operating systems — in development</div>
+        <div class="os-grid">
+          <div class="os-chip" style="border-color:rgba(13,148,136,0.6); background:rgba(13,148,136,0.12);"><div class="os-dot" style="background:#22c55e; box-shadow:0 0 6px #22c55e;"></div><span style="color:#fff;">Mobility OS <span style="font-size:0.65rem; color:#86efac; font-weight:700;">↗ July 2025</span></span></div>
+          <div class="os-chip" style="opacity:0.55;"><div class="os-dot" style="background:rgba(255,255,255,0.3);"></div><span>Governance OS</span></div>
+          <div class="os-chip" style="opacity:0.55;"><div class="os-dot" style="background:rgba(255,255,255,0.3);"></div><span>Compliance OS</span></div>
+          <div class="os-chip" style="opacity:0.55;"><div class="os-dot" style="background:rgba(255,255,255,0.3);"></div><span>Operations OS</span></div>
+          <div class="os-chip" style="opacity:0.55;"><div class="os-dot" style="background:rgba(255,255,255,0.3);"></div><span>Financial Ops OS</span></div>
+          <div class="os-chip" style="opacity:0.55;"><div class="os-dot" style="background:rgba(255,255,255,0.3);"></div><span>Workforce OS</span></div>
+        </div>
+        <div class="visual-connector">
+          <div class="connector-line"></div>
+          <div class="connector-badge">
+            <div class="logo-mark">RSF</div>
+            <span>RSF Intelligence Layer</span>
+          </div>
+          <div class="connector-line"></div>
+        </div>
+        <div class="os-grid" style="margin-top:10px;">
+          <div class="os-chip" style="opacity:0.55;"><div class="os-dot" style="background:rgba(255,255,255,0.3);"></div><span>Risk OS</span></div>
+          <div class="os-chip" style="opacity:0.3; border-style:dashed;"><div class="os-dot" style="background:rgba(255,255,255,0.15)"></div><span style="color:rgba(255,255,255,0.35);">More planned</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cred-bar" style="margin-top:80px;">
+    <div class="wrap">
+      <div class="cred-items">
+        <div class="cred-item">
+          <div class="cred-num">25+</div>
+          <div class="cred-label">Years of practitioner<br>experience behind this</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-num">7</div>
+          <div class="cred-label">Operating systems<br>in development</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-num">July '25</div>
+          <div class="cred-label">First launch:<br>Mobility OS</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-num">Open</div>
+          <div class="cred-label">Now onboarding design<br>partners &amp; early adopters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section id="problem">
+  <div class="wrap">
+    <div class="section-heading centered">
+      <div class="eyebrow">The Problem</div>
+      <h2>Organizations buy more software every year. The problems get worse.</h2>
+      <p>More dashboards. More vendors. More complexity. Yet governance failures, compliance breaches, and operational blind spots keep repeating. Here is why.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📉</div>
+        <h4>Visibility Collapses</h4>
+        <p>More data, more reports — yet leaders still can't see what's happening in real time.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⚠️</div>
+        <h4>Compliance Gets Harder</h4>
+        <p>Every new tool adds another compliance surface. Audit prep is always a scramble.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔍</div>
+        <h4>Risk Hides in Gaps</h4>
+        <p>Point solutions create blind spots. Risk lives in the space between your systems.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🐢</div>
+        <h4>Decisions Slow Down</h4>
+        <p>Leaders wait for reports instead of acting on live, governed intelligence.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px; max-width:760px; margin-left:auto; margin-right:auto; background:var(--navy); border-radius:var(--radius-lg); padding:32px 36px; text-align:center;">
+      <p style="color:rgba(255,255,255,0.7); font-size:0.95rem; margin-bottom:8px;">The root cause</p>
+      <p style="font-family:var(--font-head); font-size:1.15rem; font-weight:700; color:#fff; line-height:1.5;">
+        The problem is not a lack of systems. It's the absence of a <span style="color:var(--teal-light);">connected operating intelligence layer</span> that makes them work together.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT WE DO ── -->
+<section id="what-we-do">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+      <div>
+        <div class="eyebrow">What We Do</div>
+        <h2>We build the software that runs how your organization actually operates</h2>
+        <p style="color:var(--steel); margin-top:16px; font-size:1rem;">
+          RazorSharpFocus creates Digital Operating Systems — domain-specific software products that go beyond tools and dashboards. Each one manages a complete operational discipline end-to-end.
+        </p>
+        <div style="margin-top:32px; display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <div style="width:10px; height:10px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:6px;"></div>
+            <div>
+              <strong style="font-family:var(--font-head); color:var(--navy); font-size:0.95rem;">Not a dashboard or reporting tool.</strong>
+              <p style="color:var(--steel); font-size:0.88rem; margin-top:4px;">Our products manage the actual work — workflows, compliance tracking, accountability, financial controls.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <div style="width:10px; height:10px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:6px;"></div>
+            <div>
+              <strong style="font-family:var(--font-head); color:var(--navy); font-size:0.95rem;">Not a consultancy or implementation partner.</strong>
+              <p style="color:var(--steel); font-size:0.88rem; margin-top:4px;">We build and ship software products that your team deploys and operates independently.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <div style="width:10px; height:10px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:6px;"></div>
+            <div>
+              <strong style="font-family:var(--font-head); color:var(--navy); font-size:0.95rem;">Built by practitioners who ran these systems.</strong>
+              <p style="color:var(--steel); font-size:0.88rem; margin-top:4px;">Every product reflects problems we personally lived inside enterprises — not theories from whiteboards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--soft); border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px;">
+          <p style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--slate); margin-bottom:20px;">How it works</p>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <div style="display:flex; gap:16px; align-items:flex-start; padding-bottom:24px; border-left:2px solid var(--teal); padding-left:20px; margin-left:10px;">
+              <div>
+                <div style="width:20px; height:20px; border-radius:50%; background:var(--teal); color:#fff; font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin-left:-31px; margin-bottom:8px; flex-shrink:0;">1</div>
+                <h4 style="font-family:var(--font-head); font-size:0.95rem; color:var(--navy); margin-bottom:6px;">Choose your operating system</h4>
+                <p style="font-size:0.83rem; color:var(--steel);">Select the domain you want to improve — mobility, compliance, governance, risk, finance, or operations.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:16px; align-items:flex-start; padding-bottom:24px; border-left:2px solid var(--teal); padding-left:20px; margin-left:10px;">
+              <div>
+                <div style="width:20px; height:20px; border-radius:50%; background:var(--teal); color:#fff; font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin-left:-31px; margin-bottom:8px; flex-shrink:0;">2</div>
+                <h4 style="font-family:var(--font-head); font-size:0.95rem; color:var(--navy); margin-bottom:6px;">Deploy with your data and workflows</h4>
+                <p style="font-size:0.83rem; color:var(--steel);">Each OS plugs into your existing tools and teams. It manages the full workflow — not just reports on it.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:16px; align-items:flex-start; padding-left:20px; margin-left:10px;">
+              <div>
+                <div style="width:20px; height:20px; border-radius:50%; background:var(--teal); color:#fff; font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin-left:-31px; margin-bottom:8px; flex-shrink:0;">3</div>
+                <h4 style="font-family:var(--font-head); font-size:0.95rem; color:var(--navy); margin-bottom:6px;">Gain live, governed intelligence</h4>
+                <p style="font-size:0.83rem; color:var(--steel);">All systems share one intelligence layer — giving leaders real-time clarity across every dimension that matters.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIVIDER QUOTE ── -->
+<div class="divider-quote">
+  <div class="wrap">
+    <p>"Technology existed. Processes existed. Software existed. <em>Connected, accountable, governed systems did not.</em> That's the gap we built RSF to close."</p>
+  </div>
+</div>
+
+<!-- ── OPERATING SYSTEMS ── -->
+<section id="operating-systems">
+  <div class="wrap">
+    <div class="section-heading centered">
+      <div class="eyebrow">What We're Building</div>
+      <h2>Seven Domain-Specific Operating Systems</h2>
+      <p>Our first operating systems are currently being developed with design partners and early adopters. Mobility OS launches in July 2025 — the remaining suite follows through 2025–2026.</p>
+    </div>
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:0; margin-bottom:40px;">
+      <div style="display:flex; align-items:center; gap:8px; font-size:0.8rem; color:var(--steel);"><span style="width:10px; height:10px; border-radius:50%; background:#22c55e; display:inline-block;"></span>Launching July 2025</div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:0.8rem; color:var(--steel);"><span style="width:10px; height:10px; border-radius:50%; background:#f59e0b; display:inline-block;"></span>In Development — Design Partners Welcome</div>
+    </div>
+    <div class="os-cards">
+      <div class="os-card" style="border-color:#bbf7d0;">
+        <div class="os-card-icon" style="background:#eff6ff;">🚗</div>
+        <div class="os-status-launch">Launching July 2025</div>
+        <h3>Mobility OS</h3>
+        <div class="os-tagline">For fleet and mobility-first organizations</div>
+        <p>Manages the full lifecycle of drivers, vehicles, contracts, collections, compliance, and performance for mobility businesses.</p>
+        <ul class="os-features">
+          <li>Driver onboarding and lifecycle</li>
+          <li>Vehicle tracking and compliance</li>
+          <li>Collections and settlements engine</li>
+          <li>Regulatory compliance reporting</li>
+        </ul>
+      </div>
+      <div class="os-card">
+        <div class="os-card-icon" style="background:#f0fdf4;">⚖️</div>
+        <div class="os-status-dev">In Development</div>
+        <h3>Governance OS</h3>
+        <div class="os-tagline">Accountability and decision governance at scale</div>
+        <p>Builds organizational accountability, ownership clarity, and decision-making transparency across every layer of your business.</p>
+        <ul class="os-features">
+          <li>Accountability mapping</li>
+          <li>Policy administration and versioning</li>
+          <li>Decision registers and approvals</li>
+          <li>Board and leadership reporting</li>
+        </ul>
+      </div>
+      <div class="os-card">
+        <div class="os-card-icon" style="background:#f0fdf4;">🛡️</div>
+        <div class="os-status-dev">In Development</div>
+        <h3>Compliance OS</h3>
+        <div class="os-tagline">From reactive compliance to continuous readiness</div>
+        <p>Automates compliance monitoring, audits, controls, and regulatory obligations so your organization stays audit-ready every day.</p>
+        <ul class="os-features">
+          <li>Regulatory obligation management</li>
+          <li>Continuous compliance monitoring</li>
+          <li>Audit scheduling and evidence management</li>
+          <li>DPDP, GDPR and sector frameworks</li>
+        </ul>
+      </div>
+      <div class="os-card">
+        <div class="os-card-icon" style="background:#fff7ed;">⚙️</div>
+        <div class="os-status-dev">In Development</div>
+        <h3>Operations OS</h3>
+        <div class="os-tagline">Operational visibility and execution excellence</div>
+        <p>Drives process consistency, operational visibility, and execution discipline across distributed teams and complex workflows.</p>
+        <ul class="os-features">
+          <li>SOP creation, distribution, monitoring</li>
+          <li>Process workflow automation</li>
+          <li>Cross-functional visibility</li>
+          <li>Operational health dashboards</li>
+        </ul>
+      </div>
+      <div class="os-card">
+        <div class="os-card-icon" style="background:#fefce8;">💼</div>
+        <div class="os-status-dev">In Development</div>
+        <h3>Financial Operations OS</h3>
+        <div class="os-tagline">Financial accountability and control, end-to-end</div>
+        <p>Manages collections, settlements, reconciliations, and financial accountability with the precision modern organizations require.</p>
+        <ul class="os-features">
+          <li>Collections pipeline management</li>
+          <li>Settlement and disbursement processing</li>
+          <li>Automated reconciliation engine</li>
+          <li>Ledger management and audit trails</li>
+        </ul>
+      </div>
+      <div class="os-card">
+        <div class="os-card-icon" style="background:#faf5ff;">👥</div>
+        <div class="os-status-dev">In Development</div>
+        <h3>Workforce OS</h3>
+        <div class="os-tagline">Distributed team management with accountability built in</div>
+        <p>Manages distributed teams, field operations, productivity, and performance with clarity and operational discipline.</p>
+        <ul class="os-features">
+          <li>Distributed team management</li>
+          <li>Field operations tracking</li>
+          <li>Task assignment and monitoring</li>
+          <li>Performance evaluation frameworks</li>
+        </ul>
+      </div>
+      <div class="os-card">
+        <div class="os-card-icon" style="background:#fff1f2;">🎯</div>
+        <div class="os-status-dev">In Development</div>
+        <h3>Risk OS</h3>
+        <div class="os-tagline">Proactive risk visibility before incidents become crises</div>
+        <p>Identifies, assesses, monitors, and mitigates business risks proactively — connected to controls and accountable owners.</p>
+        <ul class="os-features">
+          <li>Enterprise risk register</li>
+          <li>Risk assessment and scoring</li>
+          <li>KRI monitoring</li>
+          <li>Risk reporting for leadership and boards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FRAMEWORK ── -->
+<section id="framework">
+  <div class="wrap">
+    <div class="section-heading" style="max-width:640px;">
+      <div class="eyebrow">Our Methodology</div>
+      <h2 style="color:#fff;">The RSF Operating Excellence Framework</h2>
+      <p style="color:rgba(255,255,255,0.55);">Seven interconnected dimensions of organizational performance. Every product we build connects back to this framework — by design, not by accident.</p>
+    </div>
+    <div class="framework-chain">
+      <div class="chain-item"><div class="chain-node">People</div><div class="chain-arrow">→</div></div>
+      <div class="chain-item"><div class="chain-node">Process</div><div class="chain-arrow">→</div></div>
+      <div class="chain-item"><div class="chain-node">Governance</div><div class="chain-arrow">→</div></div>
+      <div class="chain-item"><div class="chain-node">Compliance</div><div class="chain-arrow">→</div></div>
+      <div class="chain-item"><div class="chain-node">Risk</div><div class="chain-arrow">→</div></div>
+      <div class="chain-item"><div class="chain-node">Security</div><div class="chain-arrow">→</div></div>
+      <div class="chain-item"><div class="chain-node">Intelligence</div></div>
+    </div>
+    <div class="framework-pillars">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <h4>People</h4>
+        <p>Creating accountability, ownership, and clarity of roles across every level of the organization.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <h4>Process</h4>
+        <p>Driving consistency, efficiency, and operational discipline at scale — removing ambiguity from execution.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <h4>Governance</h4>
+        <p>Improving decision-making, oversight, transparency, and leadership accountability across the organization.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <h4>Compliance</h4>
+        <p>Ensuring proactive, continuous regulatory readiness — not scrambling at audit time.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <h4>Risk</h4>
+        <p>Identifying, monitoring, and mitigating uncertainties before they become operational failures.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">06</div>
+        <h4>Security</h4>
+        <p>Protecting business continuity, data integrity, and customer trust across all operational layers.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">07</div>
+        <h4>Intelligence</h4>
+        <p>Transforming connected, governed data into confident, real-time organizational decisions.</p>
+      </div>
+      <div class="pillar-card" style="background:rgba(13,148,136,0.12); border-color:rgba(13,148,136,0.3);">
+        <div style="color:var(--teal-light); font-size:1.5rem; margin-bottom:12px;">⚡</div>
+        <h4 style="color:#fff;">One connected framework</h4>
+        <p>Every RSF product solves one or more layers. Together, they form a complete operating intelligence system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRIES ── -->
+<section id="industries">
+  <div class="wrap">
+    <div class="section-heading centered">
+      <div class="eyebrow">Industries We Serve</div>
+      <h2>Where Governance, Compliance, and Operations Are Business-Critical</h2>
+      <p>Our products are purpose-built for industries where operational failure isn't just inefficient — it carries regulatory, financial, and reputational consequences.</p>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card">
+        <div class="ind-icon">🚛</div>
+        <div>
+          <h4>Mobility and Transportation</h4>
+          <p>Fleet management, driver operations, vehicle lifecycle, and compliance for mobility-first businesses.</p>
+        </div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🏦</div>
+        <div>
+          <h4>Financial Services</h4>
+          <p>Banking, lending, payments, and financial institution operations with tight regulatory requirements.</p>
+        </div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🌐</div>
+        <div>
+          <h4>Digital Platforms</h4>
+          <p>High-velocity tech companies that need operational governance as they scale beyond a startup.</p>
+        </div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🏢</div>
+        <div>
+          <h4>Enterprise Services</h4>
+          <p>Large organizations managing complex, multi-function operations across teams and geographies.</p>
+        </div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">📦</div>
+        <div>
+          <h4>Logistics and Supply Chain</h4>
+          <p>End-to-end supply chain visibility, partner compliance, and operational accountability.</p>
+        </div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">📈</div>
+        <div>
+          <h4>High-Growth Organizations</h4>
+          <p>Scale-ups building governance and compliance infrastructure before problems emerge — not after.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER ── -->
+<section id="founder">
+  <div class="wrap">
+    <div class="section-heading centered">
+      <div class="eyebrow">Built by Practitioners</div>
+      <h2>Not theorists. People who ran these systems.</h2>
+      <p>Every product at RazorSharpFocus reflects challenges we personally navigated inside enterprises — not observations from the outside.</p>
+    </div>
+    <div class="founder-card">
+      <div class="founder-header">
+        <div class="founder-avatar">AT</div>
+        <div>
+          <div class="founder-name">Amit Kumar Tyagi</div>
+          <div class="founder-title">Founder &amp; CEO — Former CTO, Governance Architect, Platform Builder</div>
+        </div>
+      </div>
+      <div class="founder-bio">
+        <p>I spent over 25 years inside organizations — not studying them, but leading technology transformation programs, rebuilding financial infrastructure, designing governance frameworks, and building the operational systems that determine whether organizations grow or stall.</p>
+        <p>Across financial services, mobility, logistics, healthcare, and enterprise technology — in every organization I worked — the challenge was the same. The problem was never the software. It was the absence of connected, accountable systems that tied people to processes, data to decisions, and obligations to outcomes.</p>
+        <div class="founder-quote">
+          <p>Technology existed. Processes existed. Software existed. Operational clarity, accountability, and integrated control did not. RazorSharpFocus is what I built to fix that — not for a whiteboard, but for the organizations I watched struggle with it for two decades.</p>
+        </div>
+        <p>We are not a software company. We are not a consultancy. We build the infrastructure of operational excellence.</p>
+      </div>
+      <div class="founder-tags">
+        <span class="founder-tag">25+ Years Enterprise Leadership</span>
+        <span class="founder-tag">Former CTO</span>
+        <span class="founder-tag">FinTech &amp; Payments</span>
+        <span class="founder-tag">Digital Transformation</span>
+        <span class="founder-tag">Governance &amp; Compliance</span>
+        <span class="founder-tag">Risk Management</span>
+        <span class="founder-tag">7+ Enterprise Builds</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY RSF ── -->
+<section id="why-rsf">
+  <div class="wrap">
+    <div class="section-heading centered">
+      <div class="eyebrow">Why Choose RSF</div>
+      <h2>What Makes Us Different</h2>
+      <p>Most enterprise software solves one small problem. We solve an entire operating domain.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🏗️</span>
+        <h3>End-to-End, Not Point Solutions</h3>
+        <p>Each operating system manages a complete discipline — not a slice of it. Less integration, less data fragmentation, less maintenance overhead.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🔗</span>
+        <h3>A Shared Intelligence Layer</h3>
+        <p>All RSF products share one data and workflow foundation. Governance, compliance, and risk stay connected — automatically, not manually.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🔒</span>
+        <h3>Enterprise-Grade Security</h3>
+        <p>Multi-tenant architecture, role-based access control, immutable audit trails, and regulatory compliance built in from day one.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⚡</span>
+        <h3>Practitioner-Designed</h3>
+        <p>Built by people who ran governance programs, navigated compliance audits, and managed risk frameworks inside real organizations — not outside them.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📐</span>
+        <h3>Framework-Driven Architecture</h3>
+        <p>Every product maps to our 7-pillar Operating Excellence Framework. Nothing is built arbitrarily — each feature serves an operational outcome.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🚀</span>
+        <h3>Scales With You</h3>
+        <p>Start with one operating system. Expand as your needs grow. The shared foundation means each new system is faster to adopt than the last.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="cta-layout">
+        <div>
+          <div class="eyebrow" style="color:var(--teal-light);">Early Access</div>
+          <h2>Be part of building this.</h2>
+          <p>We are working with a small number of design partners and early adopters to shape our operating systems before broader launch. Mobility OS goes live in July 2025. If your organization deals with governance, compliance, operational, or risk challenges — let's talk.</p>
+          <div class="cta-benefits">
+            <div class="cta-benefit"><div class="cta-check">✓</div>Mobility OS — launching July 2025</div>
+            <div class="cta-benefit"><div class="cta-check">✓</div>Shape the product as a design partner</div>
+            <div class="cta-benefit"><div class="cta-check">✓</div>Early adopter pricing and priority access</div>
+            <div class="cta-benefit"><div class="cta-check">✓</div>Direct access to the founding team</div>
+            <div class="cta-benefit"><div class="cta-check">✓</div>Six more operating systems in development</div>
+          </div>
+        </div>
+        <div class="form-card" id="form-card">
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="field">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Priya" required />
+              </div>
+              <div class="field">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Sharma" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="email">Work Email</label>
+                <input type="email" id="email" placeholder="priya@company.com" required />
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" placeholder="Acme Corp" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="interest">Which operating system interests you?</label>
+              <select id="interest" required>
+                <option value="" disabled selected>Select an area…</option>
+                <option>Mobility OS — Launching July 2025</option>
+                <option>Governance OS — In Development</option>
+                <option>Compliance OS — In Development</option>
+                <option>Operations OS — In Development</option>
+                <option>Financial Operations OS — In Development</option>
+                <option>Workforce OS — In Development</option>
+                <option>Risk OS — In Development</option>
+                <option>Interested in becoming a Design Partner</option>
+                <option>General Inquiry</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">What challenge are you trying to solve?</label>
+              <textarea id="message" placeholder="Describe your current situation or priority…" required></textarea>
+            </div>
+            <button type="submit" class="btn-navy">Request Early Access</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <a href="#hero" class="footer-logo">
+          <div class="logo-mark" style="width:26px; height:26px; font-size:0.62rem;">RSF</div>
+          RazorSharpFocus
+        </a>
+        <div class="footer-tagline">Digital Operating Systems for Modern Organizations</div>
+      </div>
+      <div class="footer-links">
+        <a href="#what-we-do">What We Do</a>
+        <a href="#operating-systems">Products</a>
+        <a href="#framework">Framework</a>
+        <a href="#industries">Industries</a>
+        <a href="#founder">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <div class="footer-bottom">
+      &copy; 2025 RazorSharpFocus. All rights reserved. &nbsp;·&nbsp; Building the infrastructure of operational excellence.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('form-card').innerHTML = `
+      <div class="form-success">
+        <div class="check-circle">✓</div>
+        <h3>Thank you for reaching out</h3>
+        <p>Our team will review your message and get back to you within one business day.</p>
+      </div>`;
+  });
+</script>
+</body>
+</html>
