@@ -1238,6 +1238,38 @@ section{padding:var(--section-gap) 0}
   .mf-para:first-child::first-letter{font-size:2.8rem}
 }
 
+
+/* ── CLARITY STRIP ── */
+#clarity{
+  background:var(--ink);
+  padding:44px 0;
+}
+.clarity-inner{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;overflow:hidden;
+  max-width:900px;margin:0 auto;
+}
+@media(max-width:700px){.clarity-inner{grid-template-columns:1fr}}
+.clarity-item{
+  background:var(--ink);
+  padding:28px 30px;
+}
+.clarity-item-mark{
+  font-family:var(--fh);font-size:0.6rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.2em;
+  color:var(--teal2);margin-bottom:10px;
+}
+.clarity-item h4{
+  font-family:var(--fh);font-size:1.05rem;font-weight:700;
+  color:#fff;line-height:1.35;margin-bottom:6px;letter-spacing:-0.01em;
+}
+.clarity-item p{
+  font-size:0.82rem;color:rgba(255,255,255,0.45);
+  margin:0;line-height:1.65;
+}
+
 </style>
 </head>
 <body>
@@ -1260,10 +1292,11 @@ section{padding:var(--section-gap) 0}
       RazorSharpFocus
     </a>
     <nav class="hdr-nav" id="hdrNav">
-      <a href="#gaps">The Five Gaps</a>
+      <a href="#gaps">Five Gaps</a>
       <a href="#architecture">Architecture</a>
       <a href="#products">Products</a>
       <a href="#founder">Founder</a>
+      <a href="#manifesto-founder">Manifesto</a>
       <a href="#paths">Work With Us</a>
       <a href="#contact" class="hdr-cta">Let's Talk</a>
     </nav>
@@ -1278,12 +1311,12 @@ section{padding:var(--section-gap) 0}
   <div class="hero-body">
     <div class="wrap">
       <div class="hero-text">
-        <div class="hero-pill reveal"><div class="hero-dot"></div>&nbsp;Mobility OS — Launching July 2026</div>
+        <div class="hero-pill reveal"><div class="hero-dot"></div>&nbsp;First Operating System: Mobility OS — Launching July 2026</div>
         <h1 class="hero-h1 reveal" style="animation-delay:0.05s">
           The Operating<br><span class="accent">Intelligence</span><br>Layer.
         </h1>
         <div class="hero-category reveal" style="animation-delay:0.12s">
-          We are not building software. We are building a new<br>enterprise operating architecture — the one that should have existed all along.
+          The missing layer between enterprise systems and execution.<br>Built as software. Designed as an operating architecture.
         </div>
         <p class="hero-desc reveal" style="animation-delay:0.18s">
           <strong>RSF is the Operating Intelligence Layer that sits above your enterprise systems.</strong><br>
@@ -1300,9 +1333,9 @@ section{padding:var(--section-gap) 0}
     <div class="wrap">
       <div class="hero-strip-inner">
         <div class="hs"><div class="hs-n">25+</div><div class="hs-l">Years practitioner<br>experience behind this</div></div>
-        <div class="hs"><div class="hs-n">7</div><div class="hs-l">Operating systems<br>in development</div></div>
+        <div class="hs"><div class="hs-n">7</div><div class="hs-l">Operating systems.<br>One connected architecture.</div></div>
         <div class="hs"><div class="hs-n">Jul '26</div><div class="hs-l">First launch:<br>Mobility OS</div></div>
-        <div class="hs"><div class="hs-n">Open</div><div class="hs-l">Onboarding design<br>partners now</div></div>
+        <div class="hs"><div class="hs-n">Open</div><div class="hs-l">Design partner<br>spots available</div></div>
       </div>
     </div>
   </div>
@@ -1318,7 +1351,7 @@ section{padding:var(--section-gap) 0}
         Enterprise software manages systems.<br>
         <em>RSF manages execution.</em>
       </div>
-      <p class="tagline-sub">The gap between what enterprise systems record and what organizations actually execute has never been closed. That gap is where RSF operates.</p>
+      <p class="tagline-sub">Every enterprise runs on systems that record what happened. RSF is the software layer that ensures what should happen — actually does. That is the gap we close.</p>
     </div>
   </div>
 </section>
@@ -1330,30 +1363,54 @@ section{padding:var(--section-gap) 0}
       <div class="cat-left reveal">
         <div class="label">What Exactly Is RSF?</div>
         <h2>RSF is the Operating Intelligence Layer.<br><span style="color:var(--teal)">This is what that means.</span></h2>
-        <p>Not a dashboard. Not a reporting tool. Not a consultancy. RSF is a connected operating architecture — purpose-built to eliminate the five gaps between decisions, execution, governance, compliance, risk, and financial operations that no single enterprise system has ever closed. We are not building software. We are building the next enterprise operating model.</p>
+        <p>Not a dashboard. Not a reporting tool. Not a consultancy. RSF is a connected operating architecture — purpose-built to eliminate the five gaps between decisions, execution, governance, compliance, risk, and financial operations that no single enterprise system has ever closed. RSF is a software company creating a new operating architecture category — the one enterprises have always needed and that no single system has ever been built to provide.</p>
       </div>
       <div class="cat-right">
         <div class="cat-box reveal">
           <div class="cat-box-dot"></div>
           <div>
-            <h4>Not a point solution</h4>
-            <p>Each RSF operating system manages a complete discipline end-to-end — not a single feature or workflow within it.</p>
+            <h4>Complete discipline management</h4>
+            <p>Each operating system owns its domain end-to-end — not a single feature or workflow, but the entire governance layer for that function.</p>
           </div>
         </div>
         <div class="cat-box reveal">
           <div class="cat-box-dot"></div>
           <div>
-            <h4>Not a dashboard or reporting layer</h4>
-            <p>RSF manages the actual work — workflows, compliance tracking, financial controls, accountability chains. Not visualisations of it.</p>
+            <h4>Manages the work, not the reporting</h4>
+            <p>RSF runs workflows, compliance tracking, financial controls, and accountability chains — not visualisations of work that already happened.</p>
           </div>
         </div>
         <div class="cat-box reveal">
           <div class="cat-box-dot"></div>
           <div>
-            <h4>Built by practitioners, not product managers</h4>
-            <p>Every design decision reflects 25+ years of lived experience inside the operational systems enterprises depend on to function.</p>
+            <h4>Built from 25+ years inside enterprise operations</h4>
+            <p>Not designed for enterprises from the outside. Every product decision comes from having run the systems enterprises depend on to survive.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ CLARITY STRIP ═══════ -->
+<section id="clarity">
+  <div class="wrap">
+    <div class="clarity-inner">
+      <div class="clarity-item reveal">
+        <div class="clarity-item-mark">What RSF Is</div>
+        <h4>A software company building a new operating architecture category</h4>
+        <p>Software you deploy. Infrastructure that connects your systems, processes, people, and accountability into one governed layer.</p>
+      </div>
+      <div class="clarity-item reveal">
+        <div class="clarity-item-mark">What RSF Is Not</div>
+        <h4>Not consulting. Not advisory. Not a dashboard.</h4>
+        <p>RSF manages the actual work — workflows, compliance tracking, financial controls, accountability chains. Not reports about the work.</p>
+      </div>
+      <div class="clarity-item reveal">
+        <div class="clarity-item-mark">Who RSF Is For</div>
+        <h4>Organizations where operational gaps are costing them the most</h4>
+        <p>Mobility operators, regulated enterprises, distributed teams — any organization where the gap between policy and execution is the single biggest risk.</p>
       </div>
     </div>
   </div>
@@ -1365,7 +1422,7 @@ section{padding:var(--section-gap) 0}
     <div class="gaps-head reveal">
       <div class="label">The RSF Framework</div>
       <h2>The Five Enterprise Gaps</h2>
-      <p>Every major operational failure in an enterprise traces back to one of five gaps. RSF was built to close all of them — through connected operating systems that share one intelligence layer.</p>
+      <p>Every major operational failure in an enterprise traces back to one of five gaps. Name any audit finding, governance breakdown, or operational surprise — and you will find one of these at the root. RSF closes all five.</p>
     </div>
     <div class="gaps-grid">
       <div class="gap-card reveal">
@@ -1429,7 +1486,7 @@ section{padding:var(--section-gap) 0}
       <div class="manif-close reveal">
         RSF was built to close them —<br>
         <em>permanently, systematically, and at the architecture level.</em><br><br>
-        <span style="font-size:clamp(0.9rem,2vw,1.1rem);font-weight:600;color:rgba(255,255,255,0.45)">Not as a software product. As a new operating architecture for enterprises.</span>
+        <span style="font-size:clamp(0.9rem,2vw,1.1rem);font-weight:600;color:rgba(255,255,255,0.5)">Software built to behave like operating infrastructure — not a product feature, an architecture.</span>
       </div>
     </div>
   </div>
@@ -1480,7 +1537,7 @@ section{padding:var(--section-gap) 0}
         <div class="vision-right">
           <div class="vision-statement reveal">
             <div class="vs-label">RSF in one sentence</div>
-            <p class="vs-text">RSF is building the <span>Operating Intelligence Layer</span> that sits above enterprise systems and eliminates operational gaps between decisions, execution, governance, compliance, risk, and financial operations — permanently.</p>
+            <p class="vs-text">RSF is the software <span>Operating Intelligence Layer</span> that sits above enterprise systems — eliminating the gaps between decisions, execution, governance, compliance, risk, and financial operations that every enterprise suffers and no system was built to close.</p>
           </div>
           <div class="vision-pillars">
             <div class="vp reveal"><div class="vp-n">01</div><h4>People</h4><p>Accountability and ownership at every level.</p></div>
@@ -1668,7 +1725,7 @@ section{padding:var(--section-gap) 0}
           <div class="conv-label">The founding conviction</div>
           <p>I was reviewing a significant, avoidable operational failure. I traced it back through the chain. The data existed. The policy existed. The accountability existed — on paper. But none of it was connected. The failure lived in the gap between systems that had never been designed to speak to each other. That was the day I stopped looking for better software and started designing the connected operating layer that should have existed all along. That layer is RazorSharpFocus.</p>
         </div>
-        <p class="fp">We are not building software. We are not a consultancy. We are building the infrastructure of organizational intelligence — the operating architecture that enterprises have always needed and nobody has ever built.</p>
+        <p class="fp">RSF is a software company with one mission: to build the operating architecture that sits above enterprise systems and closes the gaps they leave behind. Not consulting. Not advisory. Software — built to behave like infrastructure.</p>
         <div class="f-close">
           "Technology existed. Processes existed. Software existed.<br>
           Connected operational intelligence — that never did.<br>
@@ -1728,8 +1785,8 @@ section{padding:var(--section-gap) 0}
       <div class="path-card featured reveal">
         <div class="path-icon">🏗️</div>
         <div class="path-for">Founder · Executive · Decision Maker</div>
-        <div class="path-title">I want to be a design partner and shape what RSF builds</div>
-        <div class="path-desc">We work with a small group of organizations to co-build our operating systems. You get direct access to the founding team, early adopter pricing, and the ability to shape something that lasts.</div>
+        <div class="path-title">Become a design partner and shape the operating architecture</div>
+        <div class="path-desc">We work with a small, deliberate group of organizations to co-build our operating systems. You get direct access to Amit and the founding team, foundational pricing, and your operational challenges embedded in the architecture from day one.</div>
         <a href="#contact" class="path-cta">Become a Design Partner →</a>
       </div>
       <div class="path-card reveal">
@@ -1750,7 +1807,7 @@ section{padding:var(--section-gap) 0}
       <div class="contact-grid">
         <div class="contact-left reveal">
           <div class="label" style="color:var(--teal3)">Let's Talk</div>
-          <h2>One question.<br>That's all<br>we need.</h2>
+          <h2>Tell us the gap.<br>We'll show you<br>how RSF closes it.</h2>
           <p class="csub">No forms with twelve fields. No automated sales sequences. Just tell us the one operational gap that costs your organization the most — and we'll take it from there.</p>
           <div class="open-q">
             <div class="oq-lbl">The one question that matters</div>
