@@ -29,7 +29,7 @@
   --fh:'Bricolage Grotesque',sans-serif;
   --fb:'Inter',sans-serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
-  --section-gap:96px;
+  --section-gap:80px;
 }
 html{scroll-behavior:smooth}
 body{
@@ -43,29 +43,29 @@ p{font-family:var(--fb);font-size:0.97rem;line-height:1.82;color:var(--grey)}
 /* ── TYPOGRAPHY SYSTEM ── */
 h1{
   font-family:var(--fh);
-  font-size:clamp(3.8rem,8.5vw,7rem);
-  font-weight:800;line-height:1.02;letter-spacing:-0.04em;
+  font-size:clamp(2.6rem,5vw,4.2rem);
+  font-weight:800;line-height:1.08;letter-spacing:-0.03em;
 }
 h2{
   font-family:var(--fh);
-  font-size:clamp(2.8rem,5.5vw,4.8rem);
-  font-weight:800;line-height:1.06;letter-spacing:-0.03em;
+  font-size:clamp(1.9rem,3.2vw,2.8rem);
+  font-weight:800;line-height:1.1;letter-spacing:-0.025em;
 }
 h3{
   font-family:var(--fh);
-  font-size:clamp(1.45rem,2.8vw,1.95rem);
-  font-weight:700;line-height:1.18;letter-spacing:-0.02em;
+  font-size:clamp(1.1rem,2vw,1.4rem);
+  font-weight:700;line-height:1.22;letter-spacing:-0.015em;
 }
 h4{font-family:var(--fh);font-size:1rem;font-weight:700;letter-spacing:-0.01em}
 .display-xl{
   font-family:var(--fh);
-  font-size:clamp(4.2rem,9vw,8.5rem);
+  font-size:clamp(3rem,6vw,5.2rem);
   font-weight:800;line-height:1.0;letter-spacing:-0.04em;
 }
 .display-lg{
   font-family:var(--fh);
-  font-size:clamp(3.2rem,6vw,6rem);
-  font-weight:800;line-height:1.04;letter-spacing:-0.035em;
+  font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:800;line-height:1.06;letter-spacing:-0.03em;
 }
 
 /* ── LAYOUT ── */
@@ -73,8 +73,8 @@ h4{font-family:var(--fh);font-size:1rem;font-weight:700;letter-spacing:-0.01em}
 @media(min-width:768px){.wrap{padding:0 52px}}
 @media(min-width:1280px){.wrap{padding:0 40px}}
 section{padding:var(--section-gap) 0}
-@media(max-width:768px){:root{--section-gap:72px}}
-@media(max-width:480px){:root{--section-gap:56px}}
+@media(max-width:768px){:root{--section-gap:56px}}
+@media(max-width:480px){:root{--section-gap:44px}}
 
 /* ── EYEBROW LABEL ── */
 .label{
@@ -199,13 +199,13 @@ section{padding:var(--section-gap) 0}
 .hero-body{
   flex:1;display:flex;align-items:center;
   position:relative;z-index:1;
-  padding:120px 0 52px;
+  padding:88px 0 36px;
 }
 .hero-text{max-width:840px}
 .hero-pill{
   display:inline-flex;align-items:center;gap:9px;
   background:rgba(12,138,126,0.14);border:1px solid rgba(12,138,126,0.32);
-  border-radius:4px;padding:8px 18px;margin-bottom:36px;
+  border-radius:4px;padding:7px 16px;margin-bottom:24px;
   font-family:var(--fh);font-size:0.66rem;font-weight:700;
   text-transform:uppercase;letter-spacing:0.22em;color:var(--teal3);
 }
@@ -220,12 +220,12 @@ section{padding:var(--section-gap) 0}
   font-family:var(--fh);
   font-size:clamp(1.05rem,2.2vw,1.4rem);
   font-weight:500;color:rgba(255,255,255,0.62);
-  letter-spacing:-0.01em;margin-bottom:28px;
+  letter-spacing:-0.01em;margin-bottom:20px;
   line-height:1.5;
 }
 .hero-desc{
   font-size:1.1rem;color:rgba(255,255,255,0.75);
-  max-width:580px;margin-bottom:52px;line-height:1.85;
+  max-width:560px;margin-bottom:36px;line-height:1.8;
 }
 .hero-desc strong{color:#fff;font-weight:600}
 .hero-acts{display:flex;gap:14px;flex-wrap:wrap}
@@ -241,8 +241,8 @@ section{padding:var(--section-gap) 0}
 .hs:first-child{padding-left:0}
 .hs:last-child{border-right:none}
 .hs-n{
-  font-family:var(--fh);font-size:2.6rem;font-weight:800;
-  color:var(--teal3);line-height:1;margin-bottom:8px;
+  font-family:var(--fh);font-size:2rem;font-weight:800;
+  color:var(--teal3);line-height:1;margin-bottom:6px;
 }
 .hs-l{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.55}
 @media(max-width:640px){
@@ -257,7 +257,7 @@ section{padding:var(--section-gap) 0}
 #category{
   background:#fff;
   border-bottom:1px solid var(--border);
-  padding:64px 0;
+  padding:52px 0;
 }
 .cat-inner{
   display:grid;grid-template-columns:1fr 1fr;
@@ -369,9 +369,9 @@ section{padding:var(--section-gap) 0}
 .manif-kicker::before,.manif-kicker::after{content:'';height:1px;width:52px;background:rgba(255,255,255,0.2)}
 .manif-h{
   font-family:var(--fh);
-  font-size:clamp(3rem,7vw,5.8rem);
+  font-size:clamp(2rem,4vw,3.4rem);
   font-weight:800;color:#fff;
-  margin-bottom:52px;line-height:1.04;letter-spacing:-0.04em;
+  margin-bottom:44px;line-height:1.1;letter-spacing:-0.03em;
 }
 .manif-h .hl{color:var(--teal3)}
 
@@ -388,7 +388,7 @@ section{padding:var(--section-gap) 0}
 .gviz-row.show{opacity:1;transform:translateY(0)}
 .gviz-l{
   text-align:right;
-  font-family:var(--fh);font-size:clamp(1.15rem,2.8vw,1.65rem);
+  font-family:var(--fh);font-size:clamp(1rem,2vw,1.25rem);
   font-weight:700;color:rgba(255,255,255,0.9);
 }
 .gviz-r{
@@ -405,16 +405,16 @@ section{padding:var(--section-gap) 0}
 }
 .manif-body{
   font-family:var(--fh);
-  font-size:clamp(1.05rem,2.2vw,1.3rem);
+  font-size:clamp(0.97rem,1.8vw,1.1rem);
   font-weight:500;color:rgba(255,255,255,0.78);
   line-height:1.9;margin-bottom:52px;
 }
 .manif-body strong{color:#fff;font-weight:700}
 .manif-close{
   font-family:var(--fh);
-  font-size:clamp(1.3rem,3vw,2rem);
+  font-size:clamp(1.1rem,2.2vw,1.5rem);
   font-weight:800;color:#fff;
-  line-height:1.35;letter-spacing:-0.025em;
+  line-height:1.4;letter-spacing:-0.02em;
 }
 .manif-close em{font-style:normal;color:var(--teal3)}
 
@@ -542,8 +542,8 @@ section{padding:var(--section-gap) 0}
   color:var(--teal2);margin-bottom:16px;
 }
 .vs-text{
-  font-family:var(--fh);font-size:clamp(1.2rem,2.8vw,1.65rem);
-  font-weight:700;color:#fff;line-height:1.5;letter-spacing:-0.02em;
+  font-family:var(--fh);font-size:clamp(1.05rem,2vw,1.3rem);
+  font-weight:700;color:#fff;line-height:1.55;letter-spacing:-0.015em;
   margin-bottom:0;
 }
 .vs-text span{color:var(--teal3)}
@@ -698,7 +698,7 @@ section{padding:var(--section-gap) 0}
 .fp-l{font-size:0.7rem;color:var(--grey);margin-top:4px;line-height:1.4}
 
 .f-right .label{margin-bottom:20px}
-.f-right h2{color:var(--ink);font-size:clamp(1.75rem,3.2vw,2.55rem);margin-bottom:28px;line-height:1.18}
+.f-right h2{color:var(--ink);font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:24px;line-height:1.2}
 .f-right .fp{color:var(--grey);font-size:0.96rem;margin-bottom:16px;line-height:1.8}
 /* THE CONVICTION MOMENT */
 .conviction{
@@ -776,7 +776,7 @@ section{padding:var(--section-gap) 0}
   gap:80px;align-items:start;
 }
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:52px}}
-.contact-left h2{color:#fff;margin-bottom:20px;font-size:clamp(2.4rem,5vw,3.8rem)}
+.contact-left h2{color:#fff;margin-bottom:20px;font-size:clamp(1.8rem,3.5vw,2.8rem)}
 .contact-left .csub{
   color:rgba(255,255,255,0.48);font-size:1rem;
   margin-bottom:36px;line-height:1.85;
@@ -901,14 +901,14 @@ section{padding:var(--section-gap) 0}
   .gap-card:nth-child(3){border-right:none}
 }
 @media(max-width:768px){
-  h1{font-size:clamp(2.8rem,10vw,4rem)!important}
-  h2{font-size:clamp(2rem,7vw,3rem)!important}
-  h3{font-size:clamp(1.2rem,4.5vw,1.6rem)!important}
-  .hero-category{font-size:clamp(1rem,3.5vw,1.2rem)!important}
+  h1{font-size:clamp(2rem,8vw,3rem)!important}
+  h2{font-size:clamp(1.5rem,6vw,2.2rem)!important}
+  h3{font-size:clamp(1rem,4vw,1.3rem)!important}
+  .hero-category{font-size:clamp(0.9rem,3vw,1.05rem)!important}
   .hero-desc{font-size:0.96rem}
-  .manif-h{font-size:clamp(2.2rem,8vw,3.2rem)!important;margin-bottom:48px!important}
+  .manif-h{font-size:clamp(1.6rem,6vw,2.2rem)!important;margin-bottom:36px!important}
   .manif-body{font-size:0.98rem!important}
-  .manif-close{font-size:clamp(1rem,4vw,1.3rem)!important}
+  .manif-close{font-size:clamp(0.95rem,3.5vw,1.1rem)!important}
   .ba-before-cell,.ba-after-cell{font-size:0.82rem!important;padding:12px 14px!important}
   .ba-arr{width:28px;height:28px;font-size:0.7rem}
   .vision-pillars{grid-template-columns:1fr 1fr}
@@ -953,15 +953,15 @@ section{padding:var(--section-gap) 0}
   .osc{padding:22px 18px}
   .path-card{padding:26px 22px}
   .conviction{padding:20px 18px}
-  .f-right h2{font-size:clamp(1.4rem,5.5vw,2rem)!important}
+  .f-right h2{font-size:clamp(1.2rem,4.5vw,1.7rem)!important}
   .open-q p{font-size:0.88rem}
   .fc{padding:24px 18px}
   .wrap{padding:0 18px}
 }
 @media(max-width:380px){
-  h1{font-size:2.4rem!important}
-  h2{font-size:1.8rem!important}
-  .hero-h1{font-size:2.6rem!important}
+  h1{font-size:1.8rem!important}
+  h2{font-size:1.4rem!important}
+  .hero-h1{font-size:1.9rem!important}
   .hero-pill{font-size:0.58rem}
   .hs-n{font-size:1.5rem}
 }
@@ -1006,7 +1006,7 @@ section{padding:var(--section-gap) 0}
 /* ── SIGNATURE TAGLINE ── */
 #tagline{
   background:#fff;
-  padding:80px 0;
+  padding:60px 0;
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
 }
@@ -1027,7 +1027,7 @@ section{padding:var(--section-gap) 0}
 .tagline-eyebrow::before,.tagline-eyebrow::after{content:'';width:32px;height:1.5px;background:var(--teal2);border-radius:2px}
 .tagline-sentence{
   font-family:var(--fh);
-  font-size:clamp(1.9rem,4.5vw,3.4rem);
+  font-size:clamp(1.55rem,3.2vw,2.6rem);
   font-weight:800;color:var(--ink);
   line-height:1.15;letter-spacing:-0.03em;
   margin-bottom:20px;
@@ -1188,7 +1188,7 @@ section{padding:var(--section-gap) 0}
 .mf-eyebrow::before{content:'';width:28px;height:2px;background:var(--teal2);border-radius:2px}
 .mf-h{
   font-family:var(--fh);
-  font-size:clamp(1.9rem,4vw,3rem);
+  font-size:clamp(1.6rem,2.8vw,2.4rem);
   font-weight:800;color:var(--ink);
   line-height:1.12;letter-spacing:-0.03em;
   margin-bottom:40px;
@@ -1242,7 +1242,7 @@ section{padding:var(--section-gap) 0}
 /* ── CLARITY STRIP ── */
 #clarity{
   background:var(--ink);
-  padding:44px 0;
+  padding:36px 0;
 }
 .clarity-inner{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -1270,6 +1270,61 @@ section{padding:var(--section-gap) 0}
   margin:0;line-height:1.65;
 }
 
+
+/* ── HERO 2-COL LAYOUT ── */
+.hero-cols{
+  display:grid;grid-template-columns:1fr 420px;
+  gap:64px;align-items:center;
+}
+@media(max-width:960px){.hero-cols{grid-template-columns:1fr;gap:40px}}
+.hero-right-panel{
+  display:flex;flex-direction:column;gap:10px;
+}
+@media(max-width:960px){.hero-right-panel{display:none}}
+.hrp-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:10px;padding:16px 20px;
+  transition:border-color 0.2s;
+}
+.hrp-card:hover{border-color:rgba(12,138,126,0.35)}
+.hrp-card-top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:8px;
+}
+.hrp-card-label{
+  font-family:var(--fh);font-size:0.6rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:rgba(255,255,255,0.28);
+}
+.hrp-card-status{
+  font-size:0.58rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.1em;padding:3px 9px;border-radius:3px;
+}
+.hrp-status-launch{
+  color:var(--teal3);background:rgba(12,138,126,0.15);
+  border:1px solid rgba(12,138,126,0.3);
+}
+.hrp-status-dev{
+  color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.hrp-card h4{
+  font-family:var(--fh);font-size:0.88rem;font-weight:700;
+  color:rgba(255,255,255,0.82);margin-bottom:3px;
+}
+.hrp-card p{
+  font-size:0.72rem;color:rgba(255,255,255,0.35);
+  margin:0;line-height:1.5;
+}
+.hrp-panel-label{
+  font-family:var(--fh);font-size:0.58rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.2em;
+  color:rgba(255,255,255,0.2);margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.hrp-panel-label::before{content:'';width:16px;height:1px;background:rgba(255,255,255,0.12)}
+
 </style>
 </head>
 <body>
@@ -1278,16 +1333,18 @@ section{padding:var(--section-gap) 0}
 <header id="hdr">
   <div class="hdr-inner">
     <a href="#hero" class="hdr-logo">
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
-        <rect width="36" height="36" rx="9" fill="#0c8a7e"/>
-        <!-- R letterform -->
-        <rect x="8" y="9" width="3" height="18" fill="white"/>
-        <path d="M11 9h6a4 4 0 0 1 0 8h-6V9z" fill="white"/>
-        <path d="M15 17l5 10h-3.5l-4.5-8.5V17h3z" fill="white" opacity="0.85"/>
-        <!-- S F mark (right side, minimal) -->
-        <rect x="22" y="9" width="6" height="2.5" rx="1" fill="white" opacity="0.6"/>
-        <rect x="22" y="16.75" width="5" height="2.5" rx="1" fill="white" opacity="0.6"/>
-        <rect x="22" y="24.5" width="6" height="2.5" rx="1" fill="white" opacity="0.6"/>
+      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <rect width="38" height="38" rx="10" fill="#0c8a7e"/>
+        <!-- Three layers symbolising the architecture stack -->
+        <!-- Top layer: enterprise systems -->
+        <rect x="7" y="9" width="24" height="4" rx="2" fill="white" opacity="0.35"/>
+        <!-- Middle layer: RSF (highlighted, full opacity) -->
+        <rect x="7" y="17" width="24" height="6" rx="2" fill="white"/>
+        <!-- Inner accent in RSF layer -->
+        <rect x="10" y="19" width="8" height="2" rx="1" fill="#0c8a7e"/>
+        <rect x="21" y="19" width="4" height="2" rx="1" fill="#0c8a7e"/>
+        <!-- Bottom layer: outcomes -->
+        <rect x="7" y="27" width="24" height="4" rx="2" fill="white" opacity="0.35"/>
       </svg>
       RazorSharpFocus
     </a>
@@ -1310,21 +1367,57 @@ section{padding:var(--section-gap) 0}
 <section id="hero">
   <div class="hero-body">
     <div class="wrap">
-      <div class="hero-text">
-        <div class="hero-pill reveal"><div class="hero-dot"></div>&nbsp;First Operating System: Mobility OS — Launching July 2026</div>
-        <h1 class="hero-h1 reveal" style="animation-delay:0.05s">
-          The Operating<br><span class="accent">Intelligence</span><br>Layer.
-        </h1>
-        <div class="hero-category reveal" style="animation-delay:0.12s">
-          The missing layer between enterprise systems and execution.<br>Built as software. Designed as an operating architecture.
+      <div class="hero-cols">
+        <div class="hero-text">
+          <div class="hero-pill reveal"><div class="hero-dot"></div>&nbsp;Mobility OS — Launching July 2026</div>
+          <h1 class="hero-h1 reveal" style="animation-delay:0.05s">
+            The Operating<br><span class="accent">Intelligence</span><br>Layer.
+          </h1>
+          <div class="hero-category reveal" style="animation-delay:0.12s">
+            The missing layer between enterprise systems and execution.
+          </div>
+          <p class="hero-desc reveal" style="animation-delay:0.18s">
+            <strong>RSF is the software Operating Intelligence Layer</strong> that sits above your enterprise systems — closing the gaps between decisions, execution, governance, compliance, risk, and financial operations. Permanently.
+          </p>
+          <div class="hero-acts reveal" style="animation-delay:0.24s">
+            <a href="#gaps" class="btn-teal">See the Five Enterprise Gaps</a>
+            <a href="#contact" class="btn-ghost">Become a Design Partner</a>
+          </div>
         </div>
-        <p class="hero-desc reveal" style="animation-delay:0.18s">
-          <strong>RSF is the Operating Intelligence Layer that sits above your enterprise systems.</strong><br>
-          Seven domain operating systems. One connected architecture. Permanently closing the gaps between decisions, execution, governance, compliance, risk, and financial operations.
-        </p>
-        <div class="hero-acts reveal" style="animation-delay:0.24s">
-          <a href="#gaps" class="btn-teal">See the Five Enterprise Gaps</a>
-          <a href="#contact" class="btn-ghost">Become a Design Partner</a>
+        <div class="hero-right-panel reveal" style="animation-delay:0.15s">
+          <div class="hrp-panel-label">Operating Systems</div>
+          <div class="hrp-card">
+            <div class="hrp-card-top">
+              <span class="hrp-card-label">Mobility OS</span>
+              <span class="hrp-card-status hrp-status-launch">Launching Jul 2026</span>
+            </div>
+            <h4>Field Activity ↔ Control</h4>
+            <p>Driver lifecycle, vehicle compliance, collections and settlements.</p>
+          </div>
+          <div class="hrp-card">
+            <div class="hrp-card-top">
+              <span class="hrp-card-label">Governance OS</span>
+              <span class="hrp-card-status hrp-status-dev">In Development</span>
+            </div>
+            <h4>Decision ↔ Accountability</h4>
+            <p>Policy administration, decision registers, accountability mapping.</p>
+          </div>
+          <div class="hrp-card">
+            <div class="hrp-card-top">
+              <span class="hrp-card-label">Compliance OS</span>
+              <span class="hrp-card-status hrp-status-dev">In Development</span>
+            </div>
+            <h4>Policy ↔ Execution</h4>
+            <p>Continuous compliance readiness and evidence management.</p>
+          </div>
+          <div class="hrp-card">
+            <div class="hrp-card-top">
+              <span class="hrp-card-label">Risk OS · Workforce OS · Financial Ops OS · Operations OS</span>
+              <span class="hrp-card-status hrp-status-dev">In Development</span>
+            </div>
+            <h4>4 more operating systems</h4>
+            <p>Closing the remaining enterprise gaps across risk, people, finance, and operations.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1850,7 +1943,7 @@ section{padding:var(--section-gap) 0}
       <!-- Brand column -->
       <div class="f-col f-col-brand">
         <a href="#hero" class="f-brand-link">
-          <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="9" fill="#0c8a7e"/><rect x="8" y="9" width="3" height="18" fill="white"/><path d="M11 9h6a4 4 0 0 1 0 8h-6V9z" fill="white"/><path d="M15 17l5 10h-3.5l-4.5-8.5V17h3z" fill="white" opacity="0.85"/><rect x="22" y="9" width="6" height="2.5" rx="1" fill="white" opacity="0.6"/><rect x="22" y="16.75" width="5" height="2.5" rx="1" fill="white" opacity="0.6"/><rect x="22" y="24.5" width="6" height="2.5" rx="1" fill="white" opacity="0.6"/></svg>
+          <svg width="30" height="30" viewBox="0 0 38 38" fill="none"><rect width="38" height="38" rx="10" fill="#0c8a7e"/><rect x="7" y="9" width="24" height="4" rx="2" fill="white" opacity="0.35"/><rect x="7" y="17" width="24" height="6" rx="2" fill="white"/><rect x="10" y="19" width="8" height="2" rx="1" fill="#0c8a7e"/><rect x="21" y="19" width="4" height="2" rx="1" fill="#0c8a7e"/><rect x="7" y="27" width="24" height="4" rx="2" fill="white" opacity="0.35"/></svg>
           <span class="f-brand-name">RazorSharpFocus</span>
         </a>
         <p class="f-tagline">The Operating Intelligence Layer.<br>Closing enterprise gaps — permanently.</p>
