@@ -286,7 +286,15 @@ section{padding:80px 0}
   .hs-item:nth-child(2n){border-left:1px solid rgba(255,255,255,0.06);padding-left:20px}
   .hs-item:nth-last-child(-n+2){border-bottom:none}
 }
-
+.hero-support{
+  max-width:1100px;margin:22px auto 0;padding:22px 24px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:18px;display:grid;gap:16px;grid-template-columns:1fr}
+.hero-support span{font-size:0.95rem;color:rgba(255,255,255,0.92)}
+.support-chips{display:flex;flex-wrap:wrap;gap:10px}
+.support-chips span{background:rgba(255,255,255,0.12);color:#fff;padding:10px 14px;border-radius:999px;font-size:0.82rem;font-weight:600;letter-spacing:0.02em}
+@media(max-width:900px){.hero-support{padding:20px 18px}}
+.hero-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:24px auto 0;padding:22px 24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:18px}
+.hero-trust .trust-item{padding:18px 20px;background:rgba(255,255,255,0.08);border-radius:16px;color:rgba(255,255,255,0.88);font-size:0.95rem;line-height:1.6;box-shadow:0 18px 40px rgba(0,0,0,0.08)}
+@media(max-width:900px){.hero-trust{grid-template-columns:1fr}}
 /* ════════════════════════════════
    TAGLINE
 ════════════════════════════════ */
@@ -873,7 +881,7 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
       <a href="#architecture">Architecture</a>
       <a href="#products">OS Suite</a>
       <a href="#founder">Founder</a>
-      <a href="#contact" class="nav-cta">Become a Partner</a>
+      <a href="#contact" class="nav-cta">Design Partner Access</a>
     </nav>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span><span></span>
@@ -895,21 +903,21 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
             <span class="badge badge-white"><span class="dot"></span>Mobility OS — Launching Soon</span>
           </div>
           <h1 class="hero-h1 reveal">The Operating<br><em class="accent" style="font-style:normal">Intelligence</em><br>Layer.</h1>
-          <p class="hero-tagline reveal">A world-class operating intelligence layer that closes enterprise execution gaps.</p>
-          <p class="hero-sub reveal">Enterprise systems capture history. <strong>RSF turns that history into decisive execution.</strong> We build the software architecture that bridges strategy, systems and the actions that actually move business.</p>
+          <p class="hero-tagline reveal">Coordinated execution for high-stakes enterprise operations.</p>
+          <p class="hero-sub reveal">RSF is the Operating Intelligence Layer that makes people, machines and systems act on one operational rhythm — faster, safer and with confidence.</p>
           <div class="hero-ctas reveal">
             <a href="#gaps" class="btn btn-primary">
-              Explore the Five Execution Gaps
+              See the Execution Gaps
               <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#contact" class="btn btn-outline">Join the Design Partner Program</a>
+            <a href="#contact" class="btn btn-outline">Apply for Design Partner Access</a>
           </div>
           <div class="hero-proof reveal">
             <div class="hp-item"><strong>Enterprise-Grade</strong> Architecture</div>
             <div class="hp-div"></div>
-            <div class="hp-item">Built for <strong>Complex Operations</strong></div>
+            <div class="hp-item">Open <strong>Design Partner</strong> Program</div>
             <div class="hp-div"></div>
-            <div class="hp-item"><strong>Real-time</strong> Intelligence</div>
+            <div class="hp-item"><strong>Decision</strong> Velocity</div>
           </div>
         </div>
 
@@ -967,6 +975,20 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
       </div>
     </div>
   </div>
+  <div class="hero-trust">
+    <div class="trust-item reveal">Built for logistics, field ops, collections and workforce execution.</div>
+    <div class="trust-item reveal">Designed for 25+ complex enterprise contexts.</div>
+    <div class="trust-item reveal">Open design partner program for early enterprise adopters.</div>
+  </div>
+  <div class="hero-support reveal">
+    <span>Trusted by enterprise operators in logistics, field service, collections and workforce.</span>
+    <div class="support-chips">
+      <span>Enterprise Logistics</span>
+      <span>Field Operations</span>
+      <span>Revenue Execution</span>
+      <span>Workforce Intelligence</span>
+    </div>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -1013,25 +1035,25 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
   <div class="container">
     <div class="section-head reveal">
       <span class="section-label">The Problem</span>
-      <h2>Five Execution Gaps That Enterprise Software Leaves Open</h2>
-      <p>Every large enterprise runs with five invisible gaps. Your platforms know about them. Nobody has built the layer to close them. Until now.</p>
+      <h2>Five Execution Gaps Enterprise Software Still Leaves Open</h2>
+      <p>Your systems capture data. They don't make sure the right person takes the right action at the right time. RSF is the missing layer that turns insight into execution.</p>
     </div>
     <div class="gaps-grid">
 
       <div class="gap-card reveal">
         <span class="gap-num">01</span>
         <h3>The Intelligence Gap</h3>
-        <p class="gap-from">Systems collect data. But the insight that should drive tomorrow's decision lives buried in yesterday's report — or nobody's report at all.</p>
+        <p class="gap-from">Systems collect data. The insight that should drive the next action is still trapped in reports and workflows.</p>
         <div class="gap-divider"><span>RSF closes it</span></div>
-        <p class="gap-to">Real-time signal routing from your data to the decision-maker who needs to act on it — before the window closes.</p>
+        <p class="gap-to">Real-time decision signals delivered to the right person at the right moment.</p>
       </div>
 
       <div class="gap-card reveal">
         <span class="gap-num">02</span>
         <h3>The Coordination Gap</h3>
-        <p class="gap-from">Your CRM says one thing. Your ERP says another. Your field team is operating on neither. Cross-system execution breaks at every handoff.</p>
+        <p class="gap-from">Your CRM says one thing. Your ERP says another. Your field team is operating on neither. Execution breaks at every handoff.</p>
         <div class="gap-divider"><span>RSF closes it</span></div>
-        <p class="gap-to">A unified execution layer that speaks to all your systems and coordinates action across them without middleware sprawl.</p>
+        <p class="gap-to">A single execution layer that coordinates every system, team and workflow without integration overhead.</p>
       </div>
 
       <div class="gap-card reveal">
@@ -1039,7 +1061,7 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <h3>The Accountability Gap</h3>
         <p class="gap-from">Tasks are assigned. Exceptions surface. Follow-through vanishes. No system owns what happens between the instruction and the outcome.</p>
         <div class="gap-divider"><span>RSF closes it</span></div>
-        <p class="gap-to">Closed-loop accountability that tracks every decision from assignment to resolution — with escalation intelligence built in.</p>
+        <p class="gap-to">Closed-loop accountability that tracks decisions from assignment to outcome — with escalation intelligence built in.</p>
       </div>
 
       <div class="gap-card reveal">
@@ -1261,13 +1283,13 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-live">Launching Soon</span>
         <h3>Mobility OS</h3>
         <div class="os-card-sub">Fleet · Telematics · Logistics Execution</div>
-        <p class="os-card-pain">"My telematics platform knows everything. My ops team still makes decisions blind."</p>
-        <p>Transforms fleet telematics data into real-time operational intelligence — route optimisation, driver performance, exception management, and cost control in a single execution layer.</p>
+        <p class="os-card-pain">"Telematics tells us what happened. We still don't know what to do next on the ground."</p>
+        <p>Turns fleet telemetry into active execution intelligence — dynamic routing, driver coaching, exception closure, and cost control delivered in the moment.</p>
         <ul class="os-card-feats">
-          <li>Live route intelligence and dynamic re-routing</li>
-          <li>Driver performance scoring with coaching triggers</li>
-          <li>Fuel and maintenance cost signal routing</li>
-          <li>Compliance exception detection and closure</li>
+          <li>Real-time route and dispatch guidance</li>
+          <li>Driver performance triggers with coaching actions</li>
+          <li>Fuel, maintenance and compliance signal routing</li>
+          <li>Live execution visibility across the fleet</li>
         </ul>
       </div>
 
@@ -1276,12 +1298,12 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-dev">In Development</span>
         <h3>Field OS</h3>
         <div class="os-card-sub">Field Service · Workforce Dispatch · SLA Execution</div>
-        <p class="os-card-pain">"We dispatch fast. We just don't know if the right person reached the right job with the right context."</p>
-        <p>Closes the gap between work orders and field execution — with intelligent dispatch, SLA tracking, and closed-loop accountability from assignment to resolution.</p>
+        <p class="os-card-pain">"Our field teams get jobs. They rarely get the right context, timing or follow-through."</p>
+        <p>Turns assigned work into executed outcomes — intelligent dispatch, SLA protection, and real-time field context that keeps work moving.</p>
         <ul class="os-card-feats">
-          <li>AI-powered technician-job matching</li>
-          <li>SLA breach prediction and pre-escalation</li>
-          <li>Real-time field context delivery</li>
+          <li>AI-driven technician-job matching</li>
+          <li>SLA risk alerts and pre-escalation actions</li>
+          <li>Context-rich execution guidance on the ground</li>
         </ul>
       </div>
 
@@ -1290,12 +1312,12 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-dev">In Development</span>
         <h3>Revenue OS</h3>
         <div class="os-card-sub">Collections · Recovery · Debt Resolution Intelligence</div>
-        <p class="os-card-pain">"Our collection system sends reminders. It doesn't know who to call, when, or what to say."</p>
-        <p>Turns accounts receivable data into intelligent collection execution — propensity scoring, optimal contact timing, channel selection, and outcome-driven resolution workflows.</p>
+        <p class="os-card-pain">"Collections sends reminders. It still doesn't know who will pay, when, or how to close the gap."</p>
+        <p>Turns receivables into execution-ready collection decisions — propensity analysis, optimal timing, channel choice, and outcome-driven resolution workflows.</p>
         <ul class="os-card-feats">
-          <li>Customer propensity-to-pay modelling</li>
-          <li>Optimal contact time and channel routing</li>
-          <li>Settlement intelligence and escalation rules</li>
+          <li>Propensity-to-pay scoring for every account</li>
+          <li>Optimal contact timing and channel selection</li>
+          <li>Resolution workflows that drive payments faster</li>
         </ul>
       </div>
 
@@ -1304,12 +1326,12 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-dev">In Development</span>
         <h3>Workforce OS</h3>
         <div class="os-card-sub">Scheduling · Deployment · Productivity Intelligence</div>
-        <p class="os-card-pain">"HRMS tracks attendance. It doesn't tell me if the right people are in the right roles tomorrow."</p>
-        <p>Converts workforce data into operational deployment intelligence — predictive scheduling, skill-to-task alignment, productivity signal routing, and attrition risk detection.</p>
+        <p class="os-card-pain">"HR systems show who is available. They don't help us put the right people on the right work tomorrow."</p>
+        <p>Turns workforce data into deployment intelligence — predictive schedules, skill-to-task alignment, and productivity signals that keep teams executing.</p>
         <ul class="os-card-feats">
-          <li>Predictive absence and capacity modelling</li>
-          <li>Skill-demand matching with deployment routing</li>
-          <li>Productivity anomaly detection</li>
+          <li>Absence and capacity forecasting</li>
+          <li>Skill-aware deployment routing</li>
+          <li>Productivity signal-based execution readiness</li>
         </ul>
       </div>
 
@@ -1318,12 +1340,12 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-dev">In Development</span>
         <h3>Channel OS</h3>
         <div class="os-card-sub">Distribution · Retail · Trade Execution</div>
-        <p class="os-card-pain">"Our distribution data is excellent. Our beat-level execution is invisible."</p>
-        <p>Brings intelligence to the last mile of trade and distribution — outlet performance, beat-level execution tracking, scheme compliance, and real-time order velocity signals.</p>
+        <p class="os-card-pain">"Our distribution data is rich, but our beat-level execution is still invisible and inconsistent."</p>
+        <p>Turns trade and distribution data into execution visibility — beat optimisation, outlet compliance, and velocity intelligence in the field.</p>
         <ul class="os-card-feats">
           <li>Beat plan optimisation and coverage scoring</li>
-          <li>Outlet health intelligence and at-risk flagging</li>
-          <li>Scheme and promotion execution tracking</li>
+          <li>Outlet health and at-risk flags</li>
+          <li>Promotion and compliance execution tracking</li>
         </ul>
       </div>
 
@@ -1332,12 +1354,12 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-dev">In Development</span>
         <h3>Asset OS</h3>
         <div class="os-card-sub">Asset Lifecycle · Maintenance · Uptime Intelligence</div>
-        <p class="os-card-pain">"We have sensor data on every machine. We still run on reactive maintenance."</p>
-        <p>Converts asset telemetry into predictive maintenance execution — failure prediction, maintenance routing, downtime prevention, and asset utilisation optimisation.</p>
+        <p class="os-card-pain">"Sensor data is plentiful. What we need is the execution signal that prevents downtime today."</p>
+        <p>Turns asset telemetry into maintenance execution — predictive failure alerts, maintenance routing, uptime preservation, and utilisation optimisation.</p>
         <ul class="os-card-feats">
-          <li>Predictive failure detection and pre-scheduling</li>
-          <li>Asset utilisation intelligence and optimisation</li>
-          <li>Lifecycle cost signal routing</li>
+          <li>Predictive failure alerts and pre-scheduling</li>
+          <li>Maintenance routing with uptime focus</li>
+          <li>Asset utilisation and lifecycle optimisation</li>
         </ul>
       </div>
 
@@ -1346,12 +1368,12 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="os-card-status ocs-dev">In Development</span>
         <h3>Compliance OS</h3>
         <div class="os-card-sub">Regulatory · Risk · Audit Intelligence</div>
-        <p class="os-card-pain">"Compliance events are logged. Nobody is routing accountability when they break."</p>
-        <p>Turns compliance data into active risk management execution — real-time deviation detection, accountability routing, and closed-loop audit trail management.</p>
+        <p class="os-card-pain">"Compliance is documented. It still isn't routed to the right owner before it becomes a risk."</p>
+        <p>Turns compliance data into execution-ready risk management — deviation detection, accountability routing, and audit-ready closed-loop response.</p>
         <ul class="os-card-feats">
           <li>Real-time compliance deviation detection</li>
           <li>Risk-weighted accountability routing</li>
-          <li>Audit-ready closed-loop documentation</li>
+          <li>Audit-ready closed-loop response tracking</li>
         </ul>
       </div>
     </div>
