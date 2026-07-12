@@ -175,36 +175,37 @@ section{padding:80px 0}
 .hero-wrap{
   flex:1;display:flex;align-items:center;
   position:relative;z-index:1;
-  padding:110px 0 48px;
+  padding:140px 0 42px;
 }
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:72px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:54px}}
 
 /* hero left */
-.hero-badge{margin-bottom:22px}
-.hero-h1{color:#fff;margin-bottom:16px}
+.hero-text{max-width:680px}
+.hero-badge{margin-bottom:28px}
+.hero-h1{color:#fff;margin-bottom:20px}
 .hero-h1 .accent{
   background:linear-gradient(135deg,var(--teal3),var(--teal2));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .hero-tagline{
-  font-size:clamp(1rem,1.8vw,1.2rem);font-weight:500;
-  color:rgba(255,255,255,0.72);line-height:1.6;margin-bottom:14px;
+  font-size:clamp(1.1rem,2vw,1.35rem);font-weight:500;
+  color:rgba(255,255,255,0.92);line-height:1.7;margin-bottom:18px;max-width:640px;
 }
 .hero-sub{
-  font-size:0.97rem;color:rgba(255,255,255,0.52);
-  line-height:1.8;margin-bottom:36px;max-width:500px;
+  font-size:1rem;color:rgba(255,255,255,0.74);
+  line-height:1.95;margin-bottom:34px;max-width:620px;
 }
-.hero-sub strong{color:rgba(255,255,255,0.85);font-weight:600}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:18px;padding:18px;box-shadow:0 28px 80px rgba(13,148,136,0.14)}
-.hero-ctas a{min-width:180px}
-.hero-proof{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.hero-sub strong{color:rgba(255,255,255,0.94);font-weight:600}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:18px;padding:20px;box-shadow:0 20px 60px rgba(13,148,136,0.16)}
+.hero-ctas a{min-width:200px}
+.hero-proof{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:12px}
 .hp-item{
-  display:flex;align-items:center;gap:8px;
-  font-size:0.78rem;color:rgba(255,255,255,0.4);font-weight:500;
+  display:flex;align-items:center;gap:10px;
+  font-size:0.9rem;color:rgba(255,255,255,0.78);font-weight:500;
 }
-.hp-item strong{color:rgba(255,255,255,0.72)}
-.hp-div{width:1px;height:16px;background:rgba(255,255,255,0.12)}
+.hp-item strong{color:#fff}
+.hp-div{width:1px;height:18px;background:rgba(255,255,255,0.2)}
 
 /* hero right — product UI mock */
 .hero-visual{position:relative}
@@ -324,9 +325,9 @@ section{padding:80px 0}
    FIVE GAPS
 ════════════════════════════════ */
 #gaps{background:var(--soft);padding:80px 0}
-.section-head{text-align:center;max-width:680px;margin:0 auto 52px}
-.section-head h2{margin-bottom:12px}
-.section-head p{font-size:1rem;color:var(--mid)}
+.section-head{text-align:center;max-width:760px;margin:0 auto 62px}
+.section-head h2{margin-bottom:18px;line-height:1.12;max-width:680px;margin:0 auto}
+.section-head p{font-size:1rem;color:var(--mid);max-width:620px;margin:0 auto;line-height:1.95}
 .gaps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 16px 40px rgba(15,23,42,0.07)}
 @media(max-width:960px){.gaps-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.gaps-grid{grid-template-columns:1fr}}
@@ -521,6 +522,49 @@ section{padding:80px 0}
 .vp h4{font-size:0.84rem;color:var(--ink);margin-bottom:2px}
 .vp p{font-size:0.74rem;color:var(--grey);margin:0;line-height:1.5}
 
+#serve{background:#f9fafb;padding:96px 0}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+@media(max-width:960px){.serve-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.serve-grid{grid-template-columns:1fr}}
+.serve-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;min-height:220px}
+.serve-icon{width:42px;height:42px;border-radius:14px;background:rgba(13,148,136,0.12);display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.serve-card h4{font-size:1rem;font-family:var(--fh);font-weight:700;color:var(--ink);margin:0}
+.serve-card p{font-size:0.88rem;color:var(--mid);line-height:1.75;margin:0;flex:1}
+
+#platform{background:#fff;padding:80px 0}
+.platform-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:stretch;margin-top:32px}
+@media(max-width:900px){.platform-grid{grid-template-columns:1fr}}
+.platform-preview{background:var(--ink);border-radius:24px;padding:28px 24px;color:#fff;display:flex;flex-direction:column;gap:22px;box-shadow:0 28px 70px rgba(0,0,0,0.14)}
+.preview-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.preview-header span{font-size:0.95rem;font-weight:700}
+.preview-pill{background:rgba(45,212,191,0.16);color:var(--teal3);font-size:0.75rem;font-weight:700;padding:6px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.08em}
+.preview-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:0.85rem;color:rgba(255,255,255,0.76)}
+.preview-meta strong{color:#fff;font-size:1.2rem}
+.preview-dashboard{display:flex;flex-direction:column;gap:18px}
+.preview-dash-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.preview-dash-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:18px;padding:16px}
+.preview-dash-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.7);margin-bottom:8px}
+.preview-dash-value{font-size:1.25rem;font-weight:700;color:#fff}
+.preview-dash-chart{position:relative;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:18px;min-height:130px}
+.preview-dash-axis{display:flex;justify-content:space-between;font-size:0.72rem;color:rgba(255,255,255,0.55);margin-bottom:14px}
+.preview-dash-line{position:absolute;left:20px;right:20px;top:50px;height:4px;border-radius:999px;background:linear-gradient(90deg,rgba(45,212,191,0.95),rgba(13,148,136,0.9));}
+.preview-list{display:flex;flex-direction:column;gap:10px}
+.preview-list div{display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.6}
+.preview-bullet{width:8px;height:8px;border-radius:50%;background:var(--teal3);margin-top:6px}
+.platform-copy-lead{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:18px;line-height:1.6}
+.platform-features{display:flex;flex-direction:column;gap:12px}
+.platform-features li{position:relative;padding-left:24px;font-size:0.94rem;color:var(--mid);line-height:1.7}
+.platform-features li::before{content:'•';position:absolute;left:0;top:0;color:var(--teal3);font-size:1.2rem;line-height:1}
+
+.arch-diagram{display:flex;flex-direction:column;align-items:center;gap:18px;margin:32px auto 0;max-width:860px;padding:26px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:18px}
+.arch-diagram-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%}
+@media(max-width:760px){.arch-diagram-row{grid-template-columns:repeat(2,1fr)}}
+.arch-node{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:16px 12px;text-align:center;color:#fff;font-weight:700;font-size:0.92rem}
+.arch-node.center{background:rgba(13,148,136,0.18);border-color:rgba(45,212,191,0.28)}
+.arch-node.bottom{grid-column:span 4;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.16);font-size:0.95rem}
+@media(max-width:760px){.arch-node.bottom{grid-column:span 2}}
+.arch-diagram-flow{font-size:1.25rem;color:rgba(255,255,255,0.75)}
+
 /* ════════════════════════════════
    PRODUCTS
 ════════════════════════════════ */
@@ -677,15 +721,15 @@ section{padding:80px 0}
 /* ════════════════════════════════
    FOOTER
 ════════════════════════════════ */
-#footer{background:#060b14;border-top:1px solid rgba(255,255,255,0.07);padding:52px 0 24px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
+#footer{background:#060b14;border-top:1px solid rgba(255,255,255,0.08);padding:62px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:24px}}
-.fg-brand{display:flex;flex-direction:column;gap:14px}
-.fg-logo{display:flex;align-items:center;gap:9px;font-family:var(--fh);font-weight:800;font-size:1rem;color:rgba(255,255,255,0.85);letter-spacing:-0.02em}
-.fg-tagline{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.65;max-width:220px}
-.fg-li{display:inline-flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.38);transition:color 0.2s;width:fit-content}
-.fg-li:hover{color:rgba(255,255,255,0.75)}
+.fg-brand{display:flex;flex-direction:column;gap:16px}
+.fg-logo{display:flex;align-items:center;gap:10px;font-family:var(--fh);font-weight:800;font-size:1rem;color:rgba(255,255,255,0.9);letter-spacing:-0.02em}
+.fg-tagline{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.75;max-width:240px}
+.fg-li{display:inline-flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.42);transition:color 0.2s;width:fit-content}
+.fg-li:hover{color:rgba(255,255,255,0.8)}
 .fg-col{}
 .fg-col-title{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.38);margin-bottom:14px}
 .fg-link{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:9px;transition:color 0.2s}
@@ -879,6 +923,8 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
     </a>
     <nav class="nav" id="main-nav" aria-label="Main navigation">
       <a href="#gaps">The Problem</a>
+      <a href="#serve">Who We Serve</a>
+      <a href="#platform">Platform</a>
       <a href="#architecture">Architecture</a>
       <a href="#products">OS Suite</a>
       <a href="#founder">Founder</a>
@@ -904,22 +950,21 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
             <span class="badge badge-white"><span class="dot"></span>Mobility OS — Launching Soon</span>
           </div>
           <h1 class="hero-h1 reveal">The Operating<br><em class="accent" style="font-style:normal">Intelligence</em><br>Layer.</h1>
-          <p class="hero-tagline reveal">The AI Operating Layer that helps enterprises make faster operational decisions across people, systems and field teams.</p>
-          <p class="hero-tagline reveal">Connect your ERP, CRM and field operations into one AI-powered execution layer that helps teams make faster operational decisions.</p>
-          <p class="hero-sub reveal">RSF is the Operating Intelligence Layer that makes people, machines and systems act on one operational rhythm — faster, safer and with confidence.</p>
+          <p class="hero-tagline reveal">Connect ERP, CRM, field teams, logistics and AI into one execution layer that turns enterprise signals into faster, more reliable operational decisions.</p>
+          <p class="hero-sub reveal">For operations leaders who run complex enterprise systems, RSF aligns people, data and field execution so work happens with clarity, speed and accountability.</p>
           <div class="hero-ctas reveal">
-            <a href="#gaps" class="btn btn-primary">
-              See the Execution Gaps
+            <a href="#contact" class="btn btn-primary">
+              Request a briefing
               <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#contact" class="btn btn-outline">Apply for Design Partner Access</a>
+            <a href="#contact" class="btn btn-outline">Design Partner Access</a>
           </div>
           <div class="hero-proof reveal">
-            <div class="hp-item"><strong>Enterprise-Grade</strong> Architecture</div>
+            <div class="hp-item"><strong>Enterprise</strong> execution layer</div>
             <div class="hp-div"></div>
-            <div class="hp-item">Open <strong>Design Partner</strong> Program</div>
+            <div class="hp-item">Built for complex systems</div>
             <div class="hp-div"></div>
-            <div class="hp-item"><strong>Decision</strong> Velocity</div>
+            <div class="hp-item"><strong>Operational</strong> confidence</div>
           </div>
         </div>
 
@@ -989,6 +1034,102 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
       <span>Field Operations</span>
       <span>Revenue Execution</span>
       <span>Workforce Intelligence</span>
+    </div>
+  </div>
+</section>
+
+<section id="serve">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Who We Serve</span>
+      <h2>Built for enterprise operations teams that need execution clarity across complex systems and real-world work.</h2>
+      <p>RSF is a fit for businesses in logistics, BFSI, telecom, utilities, field services and public sector operations — where every decision depends on cross-system coordination.</p>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card reveal">
+        <div class="serve-icon">🚚</div>
+        <h4>Logistics</h4>
+        <p>Cargo, delivery and transport teams that need a single execution layer to reduce handoff risk and speed response.</p>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">🏦</div>
+        <h4>BFSI</h4>
+        <p>Collections, revenue operations and risk teams that require faster, auditable decision flows across systems.</p>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">📶</div>
+        <h4>Telecom</h4>
+        <p>Network and field service operations that demand coordinated decisions across customer, asset and field data.</p>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">💡</div>
+        <h4>Utilities</h4>
+        <p>Energy, water and infrastructure operators that need safer, faster execution across regulatory and field workflows.</p>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">🛠️</div>
+        <h4>Field Services</h4>
+        <p>Service delivery organizations that want context-rich guidance and closed-loop accountability on every job.</p>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-icon">🏛️</div>
+        <h4>Public Sector</h4>
+        <p>Government and civic operations that require traceable decisions, coordinated response and mission assurance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Platform</span>
+      <h2>See the execution intelligence platform in action.</h2>
+      <p>Enterprise buyers gain confidence from a clear visual of how RSF surfaces gaps, routes decisions, and tracks real-world execution.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-preview reveal">
+        <div class="preview-header">
+          <span>RSF Execution Dashboard</span>
+          <div class="preview-pill">Live</div>
+        </div>
+        <div class="preview-meta">
+          <div><strong>17</strong> active operations</div>
+          <div><strong>92%</strong> execution coverage</div>
+        </div>
+        <div class="preview-dashboard">
+          <div class="preview-dash-row">
+            <div class="preview-dash-card">
+              <div class="preview-dash-label">Execution Health</div>
+              <div class="preview-dash-value">Good</div>
+            </div>
+            <div class="preview-dash-card">
+              <div class="preview-dash-label">Decision Gaps</div>
+              <div class="preview-dash-value">5 high-priority</div>
+            </div>
+          </div>
+          <div class="preview-dash-chart">
+            <div class="preview-dash-axis">
+              <span>Risk</span>
+              <span>Time</span>
+            </div>
+            <div class="preview-dash-line"></div>
+          </div>
+          <div class="preview-list">
+            <div><span class="preview-bullet"></span><strong>Field execution</strong> aligned to ERP / CRM signals</div>
+            <div><span class="preview-bullet"></span><strong>Decision gaps</strong> surfaced by priority and risk</div>
+            <div><span class="preview-bullet"></span><strong>Action routing</strong> sent to the right team instantly</div>
+          </div>
+        </div>
+      </div>
+      <div class="platform-copy reveal">
+        <p class="platform-copy-lead">One unified view for operational leaders: execution health, decision gaps and real-time action status.</p>
+        <ul class="platform-features">
+          <li>Live execution health across systems and field teams</li>
+          <li>Prioritized exceptions, alerts and action opportunities</li>
+          <li>One source of truth for operational leadership and execution teams</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1157,6 +1298,18 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
         <span class="section-label section-label-light">Technical Architecture</span>
         <h2>The Operating Intelligence Layer</h2>
         <p>RSF sits between your enterprise systems and your operational outcomes — reading signals, routing decisions, closing gaps.</p>
+      </div>
+      <div class="arch-diagram reveal">
+        <div class="arch-diagram-row">
+          <span class="arch-node">ERP</span>
+          <span class="arch-node">CRM</span>
+          <span class="arch-node">HRMS</span>
+          <span class="arch-node">Fleet</span>
+        </div>
+        <div class="arch-diagram-flow">↓</div>
+        <div class="arch-node center">RazorSharpFocus</div>
+        <div class="arch-diagram-flow">↓</div>
+        <div class="arch-node bottom"><strong>Decision Intelligence</strong><br>Execution Across Teams</div>
       </div>
       <div class="arch-stack reveal">
         <div class="arch-box arch-box-top">
@@ -1471,31 +1624,49 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
 <section id="paths">
   <div class="container">
     <div class="paths-head reveal">
-      <span class="section-label">Work With RSF</span>
-      <h2>Three Ways to Engage</h2>
-      <p>Whether you are an enterprise operator, an investor, or a builder — there is a path to engage with RSF at this stage.</p>
+      <span class="section-label">Engage with RSF</span>
+      <h2>Senior leaders, investors and builders can engage here.</h2>
+      <p>Whether you want to help define the Operating Intelligence Layer, evaluate the investment opportunity, or join the team building it — there is a clear path to engage.</p>
     </div>
     <div class="paths-grid">
       <div class="path-card featured reveal">
-        <div class="path-icon">🤝</div>
-        <div class="path-for">Priority Access</div>
-        <div class="path-title">Become a Design Partner</div>
-        <p class="path-desc">Work directly with the RSF team to shape the Operating Intelligence Layer for your enterprise context. Design partners get early access, co-development input, and preferred commercial terms.</p>
+        <div class="path-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4v2c0 2.21-1.79 4-4 4H8c-2.21 0-4-1.79-4-4v-2Z"/>
+            <path d="M9 8s1.5 2 3 2 3-2 3-2"/>
+            <path d="M9 16s1.5-2 3-2 3 2 3 2"/>
+          </svg>
+        </div>
+        <div class="path-for">Design Partners</div>
+        <div class="path-title">Co-design the OS for your enterprise context</div>
+        <p class="path-desc">Partner with RSF to shape the Operating Intelligence Layer, access early capability previews, and influence the roadmap for your organisation.</p>
         <a href="#contact" class="path-cta">Apply for Design Partnership →</a>
       </div>
       <div class="path-card reveal">
-        <div class="path-icon">📊</div>
-        <div class="path-for">For Investors</div>
-        <div class="path-title">Explore the RSF Investment Thesis</div>
-        <p class="path-desc">RSF is building a new category of enterprise infrastructure. If you invest in enterprise technology and believe the execution layer is the next major platform shift, we should talk.</p>
-        <a href="#contact" class="path-cta">Request Investor Deck →</a>
+        <div class="path-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 17h16" />
+            <path d="M7 13l3-3 4 4 5-5" />
+            <path d="M8 6h8v4H8z" />
+          </svg>
+        </div>
+        <div class="path-for">Strategic Investors</div>
+        <div class="path-title">Review the RSF market and product thesis</div>
+        <p class="path-desc">Explore how RSF is building foundational enterprise infrastructure and why the execution layer is the next major platform opportunity.</p>
+        <a href="#contact" class="path-cta">Request Investor Briefing →</a>
       </div>
       <div class="path-card reveal">
-        <div class="path-icon">🧑‍💻</div>
-        <div class="path-for">For Builders</div>
-        <div class="path-title">Join the RSF Team</div>
-        <p class="path-desc">We are hiring engineers, product managers, and enterprise architects who want to build foundational infrastructure. Remote-first, equity-rich, high-ownership roles.</p>
-        <a href="#contact" class="path-cta">Explore Open Roles →</a>
+        <div class="path-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4Z"/>
+            <path d="M4 20c0-2.21 1.79-4 4-4h8c2.21 0 4 1.79 4 4"/>
+            <path d="M6 20h12" />
+          </svg>
+        </div>
+        <div class="path-for">Talent</div>
+        <div class="path-title">Join the team building the next enterprise layer</div>
+        <p class="path-desc">We are hiring senior builders — engineers, product leaders and enterprise architects — who want to own the future of execution infrastructure.</p>
+        <a href="#contact" class="path-cta">Explore Opportunities →</a>
       </div>
     </div>
   </div>
@@ -1505,25 +1676,25 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
     <div class="contact-inner">
       <div class="contact-grid">
         <div class="contact-left reveal">
-          <span class="section-label section-label-light">Get In Touch</span>
-          <h2>Let's Close the Execution Gap — Together.</h2>
-          <p class="c-sub">RSF is actively engaging design partners, investors, and enterprise leaders who want to shape the Operating Intelligence Layer from the ground up.</p>
-          <p class="c-sub" style="margin-top:0.8rem;color:rgba(255,255,255,0.72);">This is your opportunity to co-create the execution architecture that sets the next generation of enterprise leaders apart.</p>
+          <span class="section-label section-label-light">Engage</span>
+          <h2>Shape the Operating Intelligence Layer.</h2>
+          <p class="c-sub">RSF is inviting enterprise operators, strategic investors and systems leaders to help define a new infrastructure layer that connects decisions to execution.</p>
+          <p class="c-sub" style="margin-top:0.8rem;color:rgba(255,255,255,0.72);">This is a founder-led opportunity to co-create the execution architecture that separates ambitious operators from the rest.</p>
           <div class="open-q">
-            <div class="oq-label">Open Question We Are Exploring</div>
-            <p>Which enterprise verticals will experience the greatest execution leverage from an Operating Intelligence Layer — and which should RSF build for first?</p>
+            <div class="oq-label">Executive Question</div>
+            <p>Where does your organisation lose execution speed and accountability — and how could an Operating Intelligence Layer close that gap?</p>
           </div>
           <div class="c-perks">
-            <div class="c-perk"><div class="c-perk-dot"></div>Co-development access for design partners</div>
-            <div class="c-perk"><div class="c-perk-dot"></div>Preferred commercial terms for early adopters</div>
-            <div class="c-perk"><div class="c-perk-dot"></div>Direct founder engagement — no sales layer</div>
-            <div class="c-perk"><div class="c-perk-dot"></div>Mobility OS demo available soon</div>
+            <div class="c-perk"><div class="c-perk-dot"></div>Founder-led product direction and engagement</div>
+            <div class="c-perk"><div class="c-perk-dot"></div>Co-development access for early design partners</div>
+            <div class="c-perk"><div class="c-perk-dot"></div>Priority access to early capability previews</div>
+            <div class="c-perk"><div class="c-perk-dot"></div>Strategic conversations, not sales pitches</div>
           </div>
         </div>
         <div class="contact-right reveal">
           <div class="form-card">
             <h3>Start a Conversation</h3>
-            <p class="form-sub">We respond within 24 hours. No decks. No sales calls. Just a real conversation.</p>
+            <p class="form-sub">A senior RSF team member will respond within 24 hours. No decks. No scripted pitches. Just a strategic conversation.</p>
             <form id="contact-form" onsubmit="handleSubmit(event)">
               <div class="form-row">
                 <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="Jai" required/></div>
@@ -1571,11 +1742,13 @@ select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
           </div>
           RazorSharpFocus
         </div>
-        <p class="fg-tagline">The Operating Intelligence Layer — closing execution gaps across enterprise systems.</p>
+        <p class="fg-tagline">Enterprise execution infrastructure built between systems and outcomes.</p>
       </div>
       <div class="fg-col">
         <div class="fg-col-title">Platform</div>
         <a href="#gaps" class="fg-link">The Five Gaps</a>
+        <a href="#serve" class="fg-link">Who We Serve</a>
+        <a href="#platform" class="fg-link">Platform</a>
         <a href="#architecture" class="fg-link">Architecture</a>
         <a href="#vision" class="fg-link">Vision</a>
         <a href="#products" class="fg-link">OS Suite <span class="fg-badge">7 OS</span></a>
