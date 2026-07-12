@@ -3,6 +3,6 @@
   "outputDirectory": ".",
   "framework": null,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/Index.html" }
+    { "source": "/((?!api/).*)", "destination": "/Index.html" }
   ]
 }
