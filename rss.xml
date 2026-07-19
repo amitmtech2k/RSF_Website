@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>RazorSharpFocus Blog</title>
+<link>https://razorsharpfocus.com/blog.html</link>
+<description>Latest enterprise operating intelligence insights.</description>
+<language>en-us</language>
+<lastBuildDate>Sat, 19 Jul 2026 12:00:00 GMT</lastBuildDate>
+<item>
+<title>Why Enterprise Operating Intelligence Matters</title>
+<link>https://razorsharpfocus.com/resources.html</link>
+<description>Frameworks for execution intelligence and decision-driven operations.</description>
+<pubDate>Sat, 19 Jul 2026 12:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

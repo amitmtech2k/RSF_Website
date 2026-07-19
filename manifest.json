@@ -1,0 +1,16 @@
+{
+  "name": "RazorSharpFocus",
+  "short_name": "RSF",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1b40",
+  "theme_color": "#0a1b40",
+  "description": "Enterprise Operating Intelligence Platform for execution intelligence, governance, and operational visibility.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
