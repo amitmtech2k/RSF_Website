@@ -1,6 +1,7 @@
 from pathlib import Path
 
 BASE_URL = 'https://razorsharpfocus.com'
+CONTACT_URL = '/#contact'
 ENTITY = 'RazorSharpFocus is an Enterprise Operating Intelligence Platform that connects enterprise systems, business processes, workflows, AI, and people to improve execution, governance, compliance, operational visibility, and business outcomes.'
 NAV_ITEMS = [
     ('Platform', 'platform.html'),
@@ -16,6 +17,8 @@ FOOTER_ITEMS = [
     ('Terms', 'terms.html'),
     ('Cookie Policy', 'cookie.html'),
 ]
+
+LEGAL_PAGES = ['privacy.html', 'terms.html', 'cookie.html']
 
 PAGE_SPEC = [
     {
@@ -138,9 +141,12 @@ BASE_TEMPLATE = '''<!DOCTYPE html>
 <meta property="og:image" content="https://razorsharpfocus.com/img/og-image.svg"/>
 <meta property="og:image:alt" content="RazorSharpFocus Enterprise Operating Intelligence Platform"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@RazorSharpFocus"/>
+<meta name="twitter:creator" content="@RazorSharpFocus"/>
 <meta name="twitter:title" content="<<PAGE_TITLE>> | RazorSharpFocus | Enterprise Operating Intelligence Platform"/>
 <meta name="twitter:description" content="<<META_DESCRIPTION>>"/>
 <meta name="twitter:image" content="https://razorsharpfocus.com/img/og-image.svg"/>
+<meta name="twitter:image:alt" content="RazorSharpFocus Enterprise Operating Intelligence Platform"/>
 <link rel="canonical" href="<<PAGE_URL>>"/>
 <link rel="alternate" hreflang="en" href="<<PAGE_URL>>"/>
 <link rel="manifest" href="/manifest.json"/>
@@ -158,7 +164,7 @@ BASE_TEMPLATE = '''<!DOCTYPE html>
 <header id="header">
   <div class="header-inner">
     <a href="/" class="logo"><img src="img/logo-rsf.jpeg" alt="RazorSharpFocus logo" class="logo-img"/>RazorSharpFocus</a>
-    <nav class="nav" id="main-nav" aria-label="Main navigation"><<NAV_LINKS>><a href="#contact" class="nav-cta">Talk to Enterprise</a></nav>
+    <nav class="nav" id="main-nav" aria-label="Main navigation"><<NAV_LINKS>><a href="<<CONTACT_URL>>" class="nav-cta">Talk to Enterprise</a></nav>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -173,7 +179,7 @@ BASE_TEMPLATE = '''<!DOCTYPE html>
           <p class="hero-tagline"><<PAGE_SUBHEAD>></p>
           <p class="hero-sub"><<PAGE_LEAD>></p>
           <div class="hero-ctas">
-            <a href="#contact" class="btn btn-primary">Book a briefing</a>
+            <a href="<<CONTACT_URL>>" class="btn btn-primary">Book a briefing</a>
             <a href="resources.html" class="btn btn-outline-dark">Explore resources</a>
           </div>
         </div>
@@ -329,6 +335,7 @@ def create_page(spec, nav_html, footer_html):
     return BASE_TEMPLATE.replace('<<PAGE_TITLE>>', spec['title']) \
         .replace('<<META_DESCRIPTION>>', spec['page_subhead']) \
         .replace('<<PAGE_URL>>', page_url) \
+        .replace('<<CONTACT_URL>>', CONTACT_URL) \
         .replace('<<PAGE_HEADING>>', spec['page_heading']) \
         .replace('<<PAGE_SUBHEAD>>', spec['page_subhead']) \
         .replace('<<PAGE_LEAD>>', spec['page_lead']) \
@@ -353,6 +360,8 @@ def main():
     sitemap_entries = ['<url><loc>' + BASE_URL + '/</loc><changefreq>weekly</changefreq><priority>1.00</priority></url>']
     for slug in created:
         sitemap_entries.append(f'<url><loc>{BASE_URL}/{slug}</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>')
+    for slug in LEGAL_PAGES:
+        sitemap_entries.append(f'<url><loc>{BASE_URL}/{slug}</loc><changefreq>yearly</changefreq><priority>0.30</priority></url>')
     Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>', encoding='utf-8')
     rss_items = [
         '<item>',
@@ -362,7 +371,7 @@ def main():
         '<pubDate>Sat, 19 Jul 2026 12:00:00 GMT</pubDate>',
         '</item>',
     ]
-    Path('rss.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n<channel>\n<title>RazorSharpFocus Blog</title>\n<link>' + BASE_URL + '/blog.html</link>\n<description>Latest enterprise operating intelligence insights.</description>\n<language>en-us</language>\n<lastBuildDate>Sat, 19 Jul 2026 12:00:00 GMT</lastBuildDate>\n' + '\n'.join(rss_items) + '\n</channel>\n</rss>', encoding='utf-8')
+    Path('rss.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n<channel>\n<title>RazorSharpFocus Resources</title>\n<link>' + BASE_URL + '/resources.html</link>\n<description>Latest enterprise operating intelligence insights.</description>\n<language>en-us</language>\n<lastBuildDate>Sat, 19 Jul 2026 12:00:00 GMT</lastBuildDate>\n' + '\n'.join(rss_items) + '\n</channel>\n</rss>', encoding='utf-8')
     print('Created pages:', ', '.join(created))
 
 

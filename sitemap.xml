@@ -8,4 +8,7 @@
 <url><loc>https://razorsharpfocus.com/glossary.html</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
 <url><loc>https://razorsharpfocus.com/architecture.html</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
 <url><loc>https://razorsharpfocus.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
+<url><loc>https://razorsharpfocus.com/privacy.html</loc><changefreq>yearly</changefreq><priority>0.30</priority></url>
+<url><loc>https://razorsharpfocus.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.30</priority></url>
+<url><loc>https://razorsharpfocus.com/cookie.html</loc><changefreq>yearly</changefreq><priority>0.30</priority></url>
 </urlset>
